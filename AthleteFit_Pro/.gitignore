@@ -32,6 +32,8 @@ yarn-error.*
 
 # local env files
 .env*.local
+NEXT_PUBLIC_SUPABASE_URL=https://dhljtnwzirrdbxzhftpr.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_rSSIlLCipip00QOSVLbK2Q_n_cIL99y
 
 # typescript
 *.tsbuildinfo
