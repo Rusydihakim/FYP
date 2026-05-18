@@ -16,16 +16,18 @@ export function extractFitbitToken(hash: string) {
 }
 
 // Function to fetch today's data from Fitbit using token
-export async function fetchFitbitData(token: string) {
-  const headers = { Authorization: `Bearer ${token}` };
+export async function fetchFitbitData(_token: string) {
+  // const headers = { Authorization: `Bearer ${token}` };
 
   try {
     // These are mocked responses for now if real calls fail without valid token
+    /*
     const endpoints = {
       profile: 'https://api.fitbit.com/1/user/-/profile.json',
       steps: 'https://api.fitbit.com/1/user/-/activities/date/today.json',
       hr: 'https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json'
     };
+    */
 
     // Note: To make real calls, uncomment these and handle CORS/fetch
     /*

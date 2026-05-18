@@ -8,7 +8,7 @@ import {
 export function Sidebar() {
   const { profile, signOut } = useAuth();
 
-  const role = profile?.role || 'athlete';
+  const role = (profile?.role || 'athlete').toLowerCase();
 
   const menuItems = {
     coach: [

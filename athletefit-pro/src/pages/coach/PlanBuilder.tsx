@@ -121,7 +121,7 @@ export default function PlanBuilder() {
              </div>
              
              <div className="space-y-3 mb-6">
-                {exercises.map((ex, index) => (
+                {exercises.map((ex) => (
                   <div key={ex.id} className="bg-surface border border-border rounded-lg p-3 flex items-center gap-4">
                      <GripVertical className="text-gray-500 cursor-move h-5 w-5" />
                      <div className="flex-1">

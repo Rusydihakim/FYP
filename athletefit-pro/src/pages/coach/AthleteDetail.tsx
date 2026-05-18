@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { 
   Activity, Heart, ArrowLeft, MessageSquare, PlusSquare, Target, 
-  Calendar, Award, CheckCircle2, TrendingUp, Sparkles, Moon, Loader2,
-  Trash2, Plus
+  Calendar, CheckCircle2, TrendingUp, Moon, Loader2,
+  Plus
 } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
 

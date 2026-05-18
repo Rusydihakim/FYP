@@ -86,10 +86,18 @@ export default function Wearable() {
                 <tbody className="divide-y divide-border bg-surface">
                   <tr className="hover:bg-surface2">
                      <td className="px-6 py-4 whitespace-nowrap text-white">Today</td>
-                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">8,432</td>
-                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">68 bpm</td>
-                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">1,240</td>
-                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">7h 24m</td>
+                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">
+                       {fitbitData ? fitbitData.steps.toLocaleString() : '8,432'}
+                     </td>
+                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">
+                       {fitbitData ? `${fitbitData.hr} bpm` : '68 bpm'}
+                     </td>
+                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">
+                       {fitbitData ? fitbitData.calories.toLocaleString() : '1,240'}
+                     </td>
+                     <td className="px-6 py-4 whitespace-nowrap font-mono text-gray-300">
+                       {fitbitData ? fitbitData.sleep : '7h 24m'}
+                     </td>
                   </tr>
                   <tr className="hover:bg-surface2">
                      <td className="px-6 py-4 whitespace-nowrap text-gray-300">Yesterday</td>

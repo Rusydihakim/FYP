@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PlusSquare, Clock, Users, Activity } from 'lucide-react';
+import { PlusSquare, Clock, Users } from 'lucide-react';
 
 export default function Plans() {
   const plans = [
