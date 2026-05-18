@@ -4,6 +4,8 @@ import { ProtectedRoute } from './ProtectedRoute';
 import Landing from '../pages/Landing';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import ResetPassword from '../pages/ResetPassword';
+
 
 import { PageLayout } from '../components/layout/PageLayout';
 
@@ -33,6 +35,8 @@ export default function AppRouter() {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+
 
       <Route path="/dashboard/*" element={
         <ProtectedRoute allowedRoles={['Athlete']}>

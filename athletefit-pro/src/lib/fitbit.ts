@@ -18,7 +18,7 @@ export function extractFitbitToken(hash: string) {
 // Function to fetch today's data from Fitbit using token
 export async function fetchFitbitData(token: string) {
   const headers = { Authorization: `Bearer ${token}` };
-  
+
   try {
     // These are mocked responses for now if real calls fail without valid token
     const endpoints = {
@@ -37,10 +37,10 @@ export async function fetchFitbitData(token: string) {
     */
 
     return {
-       steps: 8432,
-       calories: 1240,
-       hr: 68,
-       sleep: '7h 24m'
+      steps: 8432,
+      calories: 1240,
+      hr: 68,
+      sleep: '7h 24m'
     };
   } catch (err) {
     console.error('Fitbit fetch failed', err);

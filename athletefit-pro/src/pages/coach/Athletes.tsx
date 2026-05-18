@@ -1,17 +1,80 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AthleteRow } from '../../components/ui/AthleteRow';
-import { Search, Filter } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Search, Filter, Loader2 } from 'lucide-react';
+import { supabase } from '../../utils/supabase';
 
 export default function Athletes() {
   const [searchTerm, setSearchTerm] = useState('');
-  
-  // Mock data for now, ideally fetched from Supabase
-  const athletes = [
-    { id: '1', full_name: 'Sarah Connor', fitness_level: 'advanced', assigned_plan: 'Spartan Prep', last_active: '2 hours ago' },
-    { id: '2', full_name: 'John Smith', fitness_level: 'beginner', assigned_plan: 'Couch to 5K', last_active: '1 day ago' },
-    { id: '3', full_name: 'Emily Davis', fitness_level: 'intermediate', assigned_plan: 'Core Crusher', last_active: '5 hours ago' },
-  ];
+  const [athletes, setAthletes] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchAthletes() {
+      try {
+        setLoading(true);
+        const { data: users, error } = await supabase
+          .from('users')
+          .select('*')
+          .eq('role', 'Athlete');
+
+        if (error) throw error;
+
+        if (users) {
+          const athletesList = await Promise.all(
+            users.map(async (u) => {
+              const { data: workouts } = await supabase
+                .from('workouts')
+                .select('title, scheduled_for')
+                .eq('assigned_to', u.id)
+                .order('scheduled_for', { ascending: false })
+                .limit(1);
+
+              const { data: logs } = await supabase
+                .from('workout_logs')
+                .select('completed_at')
+                .eq('user_id', u.id)
+                .order('completed_at', { ascending: false })
+                .limit(1);
+
+              const assignedPlan = workouts && workouts.length > 0 ? workouts[0].title : 'No Active Plan';
+              
+              let lastActive = 'Never';
+              if (logs && logs.length > 0) {
+                const date = new Date(logs[0].completed_at);
+                const diffTime = Math.abs(new Date().getTime() - date.getTime());
+                const diffMinutes = Math.floor(diffTime / (1000 * 60));
+                const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffMinutes < 60) {
+                  lastActive = `${diffMinutes} mins ago`;
+                } else if (diffHours < 24) {
+                  lastActive = `${diffHours} hours ago`;
+                } else {
+                  lastActive = `${diffDays} days ago`;
+                }
+              }
+
+              return {
+                id: u.id,
+                full_name: u.full_name,
+                fitness_level: u.id === 'bd81ebd2-bd8e-4f8f-9e6b-f8b34741acb8' ? 'advanced' : 'intermediate',
+                assigned_plan: assignedPlan,
+                last_active: lastActive,
+              };
+            })
+          );
+          setAthletes(athletesList);
+        }
+      } catch (err) {
+        console.error('Error fetching athletes:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchAthletes();
+  }, []);
 
   const filteredAthletes = athletes.filter(a => 
     a.full_name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -60,9 +123,18 @@ export default function Athletes() {
               </tr>
             </thead>
             <tbody className="bg-surface2 divide-y divide-border">
-              {filteredAthletes.map((athlete) => (
-                <AthleteRow key={athlete.id} athlete={athlete} />
-              ))}
+              {loading ? (
+                <tr>
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-400">
+                    <Loader2 className="animate-spin h-8 w-8 mx-auto mb-2 text-green-500" />
+                    <span>Loading athletes...</span>
+                  </td>
+                </tr>
+              ) : (
+                filteredAthletes.map((athlete) => (
+                  <AthleteRow key={athlete.id} athlete={athlete} />
+                ))
+              )}
             </tbody>
           </table>
           
