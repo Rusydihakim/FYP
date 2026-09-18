@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../../utils/supabase';
 import { 
   Users as UsersIcon, 
-  ShieldAlert, 
-  CheckCircle, 
   Database, 
   Activity, 
   Dumbbell, 
@@ -24,8 +22,7 @@ import {
   Tooltip,
   BarChart,
   Bar,
-  Cell,
-  Legend
+  Cell
 } from 'recharts';
 
 interface RecentUser {
