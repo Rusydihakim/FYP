@@ -1,0 +1,72 @@
+/* Coach Reports Styles - Pure Vanilla CSS */
+.coach-reports-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--color-text, #EEF3FA);
+}
+
+.coach-reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coach-reports-title {
+  font-size: 1.875rem;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-weight: 700;
+  color: var(--color-text, #EEF3FA);
+}
+
+.coach-reports-export-btn {
+  background-color: var(--color-surface-2, #162035);
+  border: 1px solid var(--color-border, #1E2D47);
+  color: #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.coach-reports-export-btn:hover {
+  background-color: var(--color-surface, #0F1729);
+}
+
+.coach-reports-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .coach-reports-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.coach-reports-stat-card {
+  background-color: var(--color-surface-2, #162035);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border, #1E2D47);
+}
+
+.coach-reports-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .coach-reports-charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.coach-reports-chart-card {
+  background-color: var(--color-surface-2, #162035);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border, #1E2D47);
+}

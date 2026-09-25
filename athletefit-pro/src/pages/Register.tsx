@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import '../styles/Register.css';
 
 const registerSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -38,79 +39,79 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-bg flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <img className="mx-auto h-12 w-auto" src="/assets/logo.png" alt="AthleteFit Pro" />
-        <h2 className="mt-6 text-center text-3xl font-display text-text">Create your account</h2>
+    <div className="register-page">
+      <div className="register-header">
+        <img className="register-logo" src="/assets/logo.png" alt="AthleteFit Pro" />
+        <h2 className="register-title">Create your account</h2>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-surface py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-border">
-          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-            {authError && <div className="text-danger text-sm">{authError}</div>}
+      <div className="register-card-wrapper">
+        <div className="register-card">
+          <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
+            {authError && <div className="register-error-alert">{authError}</div>}
             
             <div>
-              <label className="block text-sm font-medium text-gray-300">Full Name</label>
+              <label className="register-label">Full Name</label>
               <div className="mt-1">
                 <input
                   type="text"
                   {...register("fullName")}
-                  className="appearance-none block w-full px-3 py-2 border border-border rounded-md shadow-sm bg-surface2 text-text placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                  className="register-input"
                 />
-                {errors.fullName && <p className="mt-1 text-sm text-danger">{errors.fullName.message}</p>}
+                {errors.fullName && <p className="register-error-text">{errors.fullName.message}</p>}
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">Email address</label>
+              <label className="register-label">Email address</label>
               <div className="mt-1">
                 <input
                   type="email"
                   {...register("email")}
-                  className="appearance-none block w-full px-3 py-2 border border-border rounded-md shadow-sm bg-surface2 text-text placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                  className="register-input"
                 />
-                {errors.email && <p className="mt-1 text-sm text-danger">{errors.email.message}</p>}
+                {errors.email && <p className="register-error-text">{errors.email.message}</p>}
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">Password</label>
+              <label className="register-label">Password</label>
               <div className="mt-1">
                 <input
                   type="password"
                   {...register("password")}
-                  className="appearance-none block w-full px-3 py-2 border border-border rounded-md shadow-sm bg-surface2 text-text placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                  className="register-input"
                 />
-                {errors.password && <p className="mt-1 text-sm text-danger">{errors.password.message}</p>}
+                {errors.password && <p className="register-error-text">{errors.password.message}</p>}
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300">Role</label>
+              <label className="register-label">Role</label>
               <div className="mt-1">
                 <select
                   {...register("role")}
-                  className="block w-full px-3 py-2 border border-border rounded-md shadow-sm bg-surface2 text-text focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                  className="register-select"
                 >
                   <option value="Athlete">Athlete</option>
                   <option value="Coach">Coach</option>
                 </select>
-                {errors.role && <p className="mt-1 text-sm text-danger">{errors.role.message}</p>}
+                {errors.role && <p className="register-error-text">{errors.role.message}</p>}
               </div>
             </div>
 
             <div>
               <button
                 type="submit" disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-bg bg-green-500 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
+                className="register-submit-btn"
               >
                 {loading ? 'Signing up...' : 'Sign up'}
               </button>
             </div>
           </form>
 
-          <div className="mt-6 text-center">
-            <Link to="/login" className="font-medium text-green-500 hover:text-green-400">
+          <div className="register-footer">
+            <Link to="/login" className="register-footer-link">
               Already have an account? Sign in
             </Link>
           </div>

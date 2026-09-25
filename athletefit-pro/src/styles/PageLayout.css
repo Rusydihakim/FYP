@@ -1,0 +1,44 @@
+/* PageLayout Component Styles - Pure Vanilla CSS */
+.page-layout-root {
+  min-height: 100vh;
+  background-color: #050811;
+  color: #EEF3FA;
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  position: relative;
+}
+
+.page-layout-root ::selection {
+  background-color: #06b6d4;
+  color: #000000;
+}
+
+.page-layout-ambient-glow {
+  position: fixed;
+  top: 0;
+  left: 16rem;
+  right: 0;
+  height: 400px;
+  background: linear-gradient(to bottom, rgba(6, 182, 212, 0.08), rgba(37, 99, 235, 0.05), transparent);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-layout-content-wrapper {
+  padding-left: 16rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-layout-main {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  .page-layout-main {
+    padding: 2rem;
+  }
+}

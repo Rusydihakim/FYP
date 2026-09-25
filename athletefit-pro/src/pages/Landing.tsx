@@ -18,27 +18,28 @@ import {
   ChevronRight,
   Smartphone
 } from 'lucide-react';
+import '../styles/Landing.css';
 
 export default function Landing() {
 
   return (
-    <div className="min-h-screen bg-[#050811] text-[#EEF3FA] selection:bg-cyan-500 selection:text-black font-sans relative overflow-x-hidden">
+    <div className="landing-page-root">
       {/* Dynamic Background Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-gradient-to-b from-cyan-500/15 via-blue-600/10 to-transparent blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute top-[800px] left-[-100px] w-[600px] h-[600px] bg-green-500/8 blur-[160px] pointer-events-none -z-10" />
-      <div className="absolute top-[2200px] right-[-100px] w-[700px] h-[700px] bg-cyan-500/10 blur-[180px] pointer-events-none -z-10" />
+      <div className="landing-glow-top" />
+      <div className="landing-glow-mid" />
+      <div className="landing-glow-bottom" />
 
       {/* ──────────────── 1. NAVBAR ──────────────── */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#050811]/80 border-b border-[#162238]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <header className="landing-navbar">
+        <div className="landing-navbar-inner">
           {/* Brand Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-cyan-400 via-blue-500 to-green-400 p-[1px] shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-              <div className="h-full w-full bg-[#080D1A] rounded-[11px] flex items-center justify-center">
-                <Zap className="h-5 w-5 text-cyan-400 fill-cyan-400 group-hover:scale-110 transition-transform" />
+            <div className="landing-brand-logo-glow">
+              <div className="landing-brand-logo-inner">
+                <Zap className="landing-brand-logo-icon" />
               </div>
             </div>
-            <span className="font-display text-2xl font-bold tracking-wider text-white">
+            <span className="landing-brand-text">
               ATHLETEFIT<span className="text-cyan-400">PRO</span>
             </span>
           </Link>

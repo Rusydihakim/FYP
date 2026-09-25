@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AthleteRow } from '../../components/ui/AthleteRow';
 import { Search, Filter, Loader2 } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
+import '../../styles/CoachAthletes.css';
 
 export default function Athletes() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -81,18 +82,18 @@ export default function Athletes() {
   );
 
   return (
-    <div className="space-y-6 text-text">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-display font-bold">My Athletes</h1>
-        <button className="bg-green-500 hover:bg-green-400 text-bg font-semibold px-4 py-2 rounded-lg transition">
+    <div className="coach-athletes-page">
+      <div className="coach-athletes-header">
+        <h1 className="coach-athletes-title">My Athletes</h1>
+        <button className="coach-athletes-add-btn">
           + Add Athlete
         </button>
       </div>
 
-      <div className="bg-surface2 rounded-xl border border-border overflow-hidden">
-        <div className="p-4 border-b border-border flex space-x-4">
-          <div className="relative flex-1">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+      <div className="coach-athletes-table-container">
+        <div className="coach-athletes-filter-bar">
+          <div className="coach-athletes-search-wrap">
+            <div className="coach-athletes-search-icon">
               <Search className="h-5 w-5 text-gray-500" />
             </div>
             <input
@@ -100,29 +101,29 @@ export default function Athletes() {
               placeholder="Search athletes..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full pl-10 pr-3 py-2 border border-border rounded-lg bg-surface text-text placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="coach-athletes-search-input"
             />
           </div>
-          <button className="flex items-center px-4 py-2 bg-surface border border-border rounded-lg text-gray-300 hover:bg-surface2 transition">
+          <button className="coach-athletes-filter-btn">
             <Filter className="h-4 w-4 mr-2" />
             Filter
           </button>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-border">
-            <thead className="bg-surface">
+          <table className="coach-athletes-table">
+            <thead className="coach-athletes-thead">
               <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Name</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Fitness Level</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Assigned Plan</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Last Active</th>
-                <th scope="col" className="relative px-6 py-3">
+                <th scope="col" className="coach-athletes-th">Name</th>
+                <th scope="col" className="coach-athletes-th">Fitness Level</th>
+                <th scope="col" className="coach-athletes-th">Assigned Plan</th>
+                <th scope="col" className="coach-athletes-th">Last Active</th>
+                <th scope="col" className="coach-athletes-th-right">
                   <span className="sr-only">Actions</span>
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-surface2 divide-y divide-border">
+            <tbody className="coach-athletes-tbody">
               {loading ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center text-gray-400">
@@ -139,7 +140,7 @@ export default function Athletes() {
           </table>
           
           {filteredAthletes.length === 0 && (
-            <div className="p-8 text-center text-gray-500">
+            <div className="coach-athletes-empty">
               No athletes found matching your search.
             </div>
           )}

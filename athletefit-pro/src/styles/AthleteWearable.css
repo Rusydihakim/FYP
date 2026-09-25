@@ -1,0 +1,128 @@
+/* Athlete Wearable Styles - Pure Vanilla CSS */
+.athlete-wearable-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--color-text, #EEF3FA);
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.athlete-wearable-title {
+  font-size: 1.875rem;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-weight: 700;
+}
+
+.athlete-wearable-connect-card {
+  background-color: var(--color-surface-2, #162035);
+  border: 1px solid var(--color-border, #1E2D47);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.athlete-wearable-icon-wrap {
+  margin: 0 auto 1.5rem auto;
+  width: 5rem;
+  height: 5rem;
+  background-color: rgba(11, 36, 71, 0.3);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.athlete-wearable-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  color: #3A91E0;
+}
+
+.athlete-wearable-connect-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+}
+
+.athlete-wearable-connect-desc {
+  color: #9ca3af;
+  max-width: 28rem;
+  margin: 0 auto 2rem auto;
+  line-height: 1.5;
+}
+
+.athlete-wearable-auth-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.athlete-wearable-auth-btn:hover:not(:disabled) {
+  background-color: #3b82f6;
+}
+
+.athlete-wearable-auth-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.athlete-wearable-connected-banner {
+  background-color: rgba(20, 83, 45, 0.2);
+  border: 1px solid #22c55e;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.athlete-wearable-table-card {
+  background-color: var(--color-surface-2, #162035);
+  border: 1px solid var(--color-border, #1E2D47);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.athlete-wearable-table-header {
+  padding: 1rem;
+  background-color: var(--color-surface, #0F1729);
+  border-bottom: 1px solid var(--color-border, #1E2D47);
+}
+
+.athlete-wearable-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.athlete-wearable-th {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--color-surface-2, #162035);
+}
+
+.athlete-wearable-td {
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+  border-top: 1px solid var(--color-border, #1E2D47);
+  background-color: var(--color-surface, #0F1729);
+}
+
+.athlete-wearable-tr:hover .athlete-wearable-td {
+  background-color: var(--color-surface-2, #162035);
+}

@@ -1,0 +1,56 @@
+/* Coach Progress Styles - Pure Vanilla CSS */
+.coach-progress-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--color-text, #EEF3FA);
+}
+
+.coach-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coach-progress-title {
+  font-size: 1.875rem;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-weight: 700;
+  color: var(--color-text, #EEF3FA);
+}
+
+.coach-progress-table-card {
+  background-color: var(--color-surface-2, #162035);
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border, #1E2D47);
+  overflow: hidden;
+}
+
+.coach-progress-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.coach-progress-thead {
+  background-color: var(--color-surface, #0F1729);
+}
+
+.coach-progress-th {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.coach-progress-th-right {
+  padding: 0.75rem 1.5rem;
+  text-align: right;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

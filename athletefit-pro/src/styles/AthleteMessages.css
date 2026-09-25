@@ -1,0 +1,170 @@
+/* Athlete Messages Styles - Pure Vanilla CSS */
+.athlete-messages-container {
+  height: calc(100vh - 8rem);
+  display: flex;
+  background-color: var(--color-surface-2, #162035);
+  border: 1px solid var(--color-border, #1E2D47);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  color: var(--color-text, #EEF3FA);
+}
+
+.athlete-messages-sidebar {
+  width: 16rem;
+  border-right: 1px solid var(--color-border, #1E2D47);
+  background-color: var(--color-surface, #0F1729);
+  display: none;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .athlete-messages-sidebar {
+    display: flex;
+  }
+}
+
+.athlete-messages-sidebar-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border, #1E2D47);
+}
+
+.athlete-messages-sidebar-title {
+  font-weight: 700;
+  font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+  font-size: 1.125rem;
+  color: var(--color-text, #EEF3FA);
+}
+
+.athlete-messages-threads-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.athlete-messages-thread-active {
+  padding: 1rem;
+  background-color: var(--color-surface-2, #162035);
+  border-left: 4px solid #22c55e;
+  cursor: pointer;
+}
+
+.athlete-messages-thread-inactive {
+  padding: 1rem;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-top: 1px solid rgba(30, 45, 71, 0.5);
+}
+
+.athlete-messages-thread-inactive:hover {
+  background-color: var(--color-surface-2, #162035);
+}
+
+.athlete-messages-chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-2, #162035);
+}
+
+.athlete-messages-mobile-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border, #1E2D47);
+  background-color: var(--color-surface, #0F1729);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .athlete-messages-mobile-header {
+    display: none;
+  }
+}
+
+.athlete-messages-chat-list {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.athlete-messages-msg-wrap-self {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.athlete-messages-msg-wrap-peer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.athlete-messages-msg-info {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.athlete-messages-bubble-self {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border-bottom-right-radius: 0.125rem;
+  max-width: 28rem;
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.athlete-messages-bubble-peer {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border-bottom-left-radius: 0.125rem;
+  max-width: 28rem;
+  background-color: var(--color-surface, #0F1729);
+  border: 1px solid var(--color-border, #1E2D47);
+  color: #e5e7eb;
+}
+
+.athlete-messages-input-bar {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border, #1E2D47);
+  background-color: var(--color-surface, #0F1729);
+}
+
+.athlete-messages-input-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.athlete-messages-input {
+  flex: 1;
+  background-color: var(--color-surface-2, #162035);
+  border: 1px solid var(--color-border, #1E2D47);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  outline: none;
+}
+
+.athlete-messages-input:focus {
+  border-color: #22c55e;
+}
+
+.athlete-messages-send-btn {
+  background-color: #22c55e;
+  color: var(--color-bg, #080D18);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.athlete-messages-send-btn:hover {
+  background-color: #4ade80;
+}

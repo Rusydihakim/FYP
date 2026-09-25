@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Send, User } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
 import { useAuth } from '../../hooks/useAuth';
+import '../../styles/AthleteMessages.css';
 
 export default function AthleteMessages() {
   const { user } = useAuth();
@@ -78,15 +79,15 @@ export default function AthleteMessages() {
   };
 
   return (
-    <div className="h-[calc(100vh-8rem)] flex bg-surface2 border border-border rounded-xl overflow-hidden text-text">
+    <div className="athlete-messages-container">
       
       {/* Sidebar Threads - For athlete, usually just their coach, maybe an AI bot */}
-      <div className="w-64 border-r border-border bg-surface flex flex-col hidden md:flex">
-        <div className="p-4 border-b border-border">
-          <h2 className="font-bold font-display text-lg">Conversations</h2>
+      <div className="athlete-messages-sidebar">
+        <div className="athlete-messages-sidebar-header">
+          <h2 className="athlete-messages-sidebar-title">Conversations</h2>
         </div>
-        <div className="flex-1 overflow-y-auto">
-          <div className="p-4 bg-surface2 border-l-4 border-l-green-500 cursor-pointer">
+        <div className="athlete-messages-threads-list">
+          <div className="athlete-messages-thread-active">
             <div className="flex items-center gap-3">
                <div className="bg-blue-900 rounded-full p-2 text-blue-200">
                   <User className="h-5 w-5" />
@@ -98,7 +99,7 @@ export default function AthleteMessages() {
             </div>
           </div>
           
-          <div className="p-4 hover:bg-surface2 border-l-4 border-l-transparent cursor-pointer transition border-t border-border/50">
+          <div className="athlete-messages-thread-inactive">
             <div className="flex items-center gap-3">
                <div className="bg-purple-900 rounded-full p-2 text-purple-200">
                   <span className="font-bold px-1">AI</span>
@@ -113,35 +114,35 @@ export default function AthleteMessages() {
       </div>
 
       {/* Chat Area */}
-      <div className="flex-1 flex flex-col bg-surface2">
-        <div className="p-4 border-b border-border bg-surface flex items-center md:hidden gap-4">
+      <div className="athlete-messages-chat-area">
+        <div className="athlete-messages-mobile-header">
            <div className="bg-blue-900 rounded-full p-2 text-blue-200">
               <User className="h-5 w-5" />
            </div>
            <h2 className="font-bold text-white text-lg">Coach Mike</h2>
         </div>
 
-        <div className="flex-1 p-6 overflow-y-auto space-y-4">
+        <div className="athlete-messages-chat-list">
           {messages.map((m) => (
-            <div key={m.id} className={`flex flex-col ${m.isSelf ? 'items-end' : 'items-start'}`}>
-              <span className="text-xs text-gray-500 mb-1">{m.sender} • {m.time}</span>
-              <div className={`px-4 py-2 rounded-2xl max-w-md ${m.isSelf ? 'bg-blue-600 text-white rounded-br-sm' : 'bg-surface border border-border text-gray-200 rounded-bl-sm'}`}>
+            <div key={m.id} className={m.isSelf ? 'athlete-messages-msg-wrap-self' : 'athlete-messages-msg-wrap-peer'}>
+              <span className="athlete-messages-msg-info">{m.sender} • {m.time}</span>
+              <div className={m.isSelf ? 'athlete-messages-bubble-self' : 'athlete-messages-bubble-peer'}>
                 {m.text}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="p-4 border-t border-border bg-surface">
-          <form onSubmit={handleSend} className="flex space-x-2">
+        <div className="athlete-messages-input-bar">
+          <form onSubmit={handleSend} className="athlete-messages-input-form">
             <input 
               type="text" 
               value={msg}
               onChange={(e) => setMsg(e.target.value)}
               placeholder="Message your coach..." 
-              className="flex-1 bg-surface2 border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500" 
+              className="athlete-messages-input" 
             />
-            <button type="submit" className="bg-green-500 hover:bg-green-400 text-bg p-2 rounded-lg transition">
+            <button type="submit" className="athlete-messages-send-btn">
               <Send className="h-5 w-5" />
             </button>
           </form>

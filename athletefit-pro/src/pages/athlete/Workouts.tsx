@@ -1,5 +1,6 @@
 import { Play, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
+import '../../styles/AthleteWorkouts.css';
 
 export default function Workouts() {
   const [showModal, setShowModal] = useState(false);
@@ -20,51 +21,51 @@ export default function Workouts() {
   ];
 
   return (
-    <div className="space-y-6 text-text">
-      <h1 className="text-3xl font-display font-bold">My Workouts</h1>
+    <div className="athlete-workouts-page">
+      <h1 className="athlete-workouts-title">My Workouts</h1>
 
       {plans.map(plan => (
-        <div key={plan.id} className="bg-surface2 border border-border rounded-xl overflow-hidden">
-           <div className="p-6 border-b border-border flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div key={plan.id} className="athlete-workouts-plan-card">
+           <div className="athlete-workouts-plan-header">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                   <h2 className="text-2xl font-bold font-display text-white">{plan.title}</h2>
-                   <span className="text-xs px-2 py-1 rounded-full uppercase font-bold bg-danger/20 text-danger">{plan.difficulty}</span>
+                   <h2 className="athlete-workouts-plan-title">{plan.title}</h2>
+                   <span className="athlete-workouts-difficulty-badge">{plan.difficulty}</span>
                 </div>
-                <p className="text-gray-400 text-sm">{plan.sessionsRemaining} sessions left this week</p>
+                <p className="athlete-workouts-plan-subtitle">{plan.sessionsRemaining} sessions left this week</p>
               </div>
-              <div className="w-full md:w-64">
-                <div className="flex justify-between text-sm mb-1">
+              <div className="athlete-workouts-progress-bar-wrap">
+                <div className="athlete-workouts-progress-header">
                    <span className="text-gray-400">Plan Progress</span>
                    <span className="text-green-400 font-mono font-bold">{plan.progress}%</span>
                 </div>
-                <div className="w-full bg-surface rounded-full h-2 border border-border overflow-hidden">
-                   <div className="h-2 rounded-full bg-green-500" style={{ width: `${plan.progress}%` }}></div>
+                <div className="athlete-workouts-progress-bar-track">
+                   <div className="athlete-workouts-progress-bar-fill" style={{ width: `${plan.progress}%` }}></div>
                 </div>
               </div>
            </div>
 
-           <div className="p-6">
-              <h3 className="font-bold mb-4 text-gray-300">This Week's Sessions</h3>
-              <div className="grid gap-4 md:grid-cols-3">
+           <div className="athlete-workouts-sessions-body">
+              <h3 className="athlete-workouts-sessions-heading">This Week's Sessions</h3>
+              <div className="athlete-workouts-sessions-grid">
                  {plan.sessions.map((session, idx) => (
-                    <div key={idx} className={`p-4 rounded-xl border ${session.completed ? 'bg-surface border-border opacity-70' : 'bg-surface2 border-blue-900'}`}>
-                       <div className="flex justify-between items-start mb-4">
+                    <div key={idx} className={session.completed ? 'athlete-workouts-session-card-completed' : 'athlete-workouts-session-card-pending'}>
+                       <div className="athlete-workouts-session-header">
                           <div>
-                            <p className="text-xs text-gray-500 font-bold uppercase mb-1">{session.day}</p>
-                            <p className="font-bold text-white">{session.name}</p>
+                            <p className="athlete-workouts-session-day">{session.day}</p>
+                            <p className="athlete-workouts-session-name">{session.name}</p>
                           </div>
                           {session.completed && <CheckCircle2 className="text-green-500 h-5 w-5" />}
                        </div>
                        
                        {session.completed ? (
-                         <button disabled className="w-full py-2 bg-surface text-gray-500 font-medium rounded-lg cursor-not-allowed">
+                         <button disabled className="athlete-workouts-btn-completed">
                            Completed
                          </button>
                        ) : (
                          <button 
                            onClick={() => setShowModal(true)}
-                           className="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg transition flex items-center justify-center"
+                           className="athlete-workouts-btn-log"
                          >
                            <Play className="h-4 w-4 mr-2" /> Log Session
                          </button>
@@ -78,13 +79,13 @@ export default function Workouts() {
 
       {/* Mock Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
-          <div className="bg-surface2 border border-border rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
-             <div className="p-6 border-b border-border">
+        <div className="athlete-workouts-modal-overlay">
+          <div className="athlete-workouts-modal">
+             <div className="athlete-workouts-modal-header">
                 <h3 className="text-xl font-bold font-display text-white">Log Workout Session</h3>
                 <p className="text-sm text-gray-400">Upper Body Strength</p>
              </div>
-             <div className="p-6 space-y-4">
+             <div className="athlete-workouts-modal-body">
                 <div>
                    <label className="block text-sm text-gray-400 mb-1">Duration (minutes)</label>
                    <input type="number" className="w-full bg-surface border border-border rounded-lg px-4 py-2 text-white" defaultValue={45} />
@@ -94,9 +95,9 @@ export default function Workouts() {
                    <textarea className="w-full bg-surface border border-border rounded-lg px-4 py-2 text-white" rows={3} placeholder="Felt strong today..."></textarea>
                 </div>
              </div>
-             <div className="p-6 border-t border-border flex justify-end gap-3 bg-surface">
-                <button onClick={() => setShowModal(false)} className="px-4 py-2 text-gray-400 hover:text-white transition">Cancel</button>
-                <button onClick={() => setShowModal(false)} className="px-4 py-2 bg-green-500 text-bg font-bold rounded-lg hover:bg-green-400 transition">Save Log</button>
+             <div className="athlete-workouts-modal-footer">
+                <button onClick={() => setShowModal(false)} className="px-4 py-2 text-gray-400 hover:text-white transition cursor-pointer">Cancel</button>
+                <button onClick={() => setShowModal(false)} className="px-4 py-2 bg-green-500 text-bg font-bold rounded-lg hover:bg-green-400 transition cursor-pointer">Save Log</button>
              </div>
           </div>
         </div>

@@ -1,0 +1,85 @@
+/* Athlete Detail (Coach view) Styles - Pure Vanilla CSS */
+.athlete-detail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--color-text, #EEF3FA);
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+.athlete-detail-back-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  gap: 0.375rem;
+}
+
+.athlete-detail-back-link:hover {
+  color: #ffffff;
+}
+
+.athlete-detail-profile-card {
+  background-color: var(--color-surface-2, #162035);
+  border: 1px solid var(--color-border, #1E2D47);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .athlete-detail-profile-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+}
+
+.athlete-detail-nav-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border, #1E2D47);
+  gap: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.athlete-detail-tab-btn {
+  padding-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.15s ease;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+}
+
+.athlete-detail-tab-active {
+  border-bottom-color: #22c55e;
+  color: #ffffff;
+}
+
+.athlete-detail-tab-inactive {
+  border-bottom-color: transparent;
+  color: #9ca3af;
+}
+
+.athlete-detail-tab-inactive:hover {
+  color: #d1d5db;
+}
