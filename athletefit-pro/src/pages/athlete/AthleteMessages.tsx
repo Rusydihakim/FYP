@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Send, User } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
 import { useAuth } from '../../hooks/useAuth';
-import '../../styles/AthleteMessages.css';
 
 export default function AthleteMessages() {
   const { user } = useAuth();
@@ -79,15 +78,15 @@ export default function AthleteMessages() {
   };
 
   return (
-    <div className="athlete-messages-container">
+    <div className="h-[calc(100vh-8rem)] flex bg-surface2 border border-border rounded-xl overflow-hidden text-text">
       
       {/* Sidebar Threads - For athlete, usually just their coach, maybe an AI bot */}
-      <div className="athlete-messages-sidebar">
-        <div className="athlete-messages-sidebar-header">
-          <h2 className="athlete-messages-sidebar-title">Conversations</h2>
+      <div className="w-64 border-r border-border bg-surface flex flex-col hidden md:flex">
+        <div className="p-4 border-b border-border">
+          <h2 className="font-bold font-display text-lg">Conversations</h2>
         </div>
-        <div className="athlete-messages-threads-list">
-          <div className="athlete-messages-thread-active">
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-4 bg-surface2 border-l-4 border-l-green-500 cursor-pointer">
             <div className="flex items-center gap-3">
                <div className="bg-blue-900 rounded-full p-2 text-blue-200">
                   <User className="h-5 w-5" />

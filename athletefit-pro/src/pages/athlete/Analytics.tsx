@@ -1,6 +1,5 @@
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Sparkles } from 'lucide-react';
-import '../../styles/AthleteAnalytics.css';
 
 export default function Analytics() {
   const strengthData = [
@@ -18,26 +17,26 @@ export default function Analytics() {
   ];
 
   return (
-    <div className="athlete-analytics-page">
-      <h1 className="athlete-analytics-title">Progress & Analytics</h1>
+    <div className="space-y-6 text-text">
+      <h1 className="text-3xl font-display font-bold">Progress & Analytics</h1>
 
-      <div className="athlete-analytics-insight-card">
-        <div className="athlete-analytics-insight-icon-wrap">
+      <div className="bg-blue-900/20 border border-blue-500/30 p-6 rounded-xl flex gap-4 items-start">
+        <div className="p-3 bg-blue-500/20 text-blue-400 rounded-lg">
           <Sparkles className="h-6 w-6" />
         </div>
         <div>
-           <h3 className="athlete-analytics-insight-title">AI Performance Insight</h3>
-           <p className="athlete-analytics-insight-text">
+           <h3 className="text-lg font-bold text-white mb-1">AI Performance Insight</h3>
+           <p className="text-blue-100/80 leading-relaxed">
              Great job this month! Your estimated 1RM for the Barbell Squat has increased by <span className="font-bold text-green-400">16%</span>. 
              Additionally, your average mile pace dropped to 8.5 min/mi, showing a <span className="font-bold text-green-400">10%</span> improvement in cardiovascular endurance.
            </p>
         </div>
       </div>
 
-      <div className="athlete-analytics-grid">
-        <div className="athlete-analytics-chart-card">
-          <h2 className="athlete-analytics-chart-title">Strength Progression (lbs)</h2>
-          <div className="athlete-analytics-chart-container">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-surface2 p-6 rounded-xl border border-border">
+          <h2 className="text-xl font-bold font-display mb-6">Strength Progression (lbs)</h2>
+          <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={strengthData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1E2D47" />

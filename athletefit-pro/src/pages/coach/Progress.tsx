@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { TrendingUp, AlertTriangle, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../utils/supabase';
-import '../../styles/CoachProgress.css';
 
 export default function Progress() {
   const [data, setData] = useState<any[]>([]);
@@ -98,12 +97,12 @@ export default function Progress() {
   }, []);
 
   return (
-    <div className="coach-progress-page">
-      <div className="coach-progress-header">
+    <div className="space-y-6 text-text">
+      <div className="flex justify-between items-center">
         <h1 className="text-3xl font-display font-bold text-white">Monitor Progress</h1>
       </div>
 
-      <div className="coach-progress-table-card">
+      <div className="bg-surface2 rounded-xl border border-border overflow-hidden">
         <div className="overflow-x-auto">
           {loading ? (
             <div className="px-6 py-12 text-center text-gray-400">

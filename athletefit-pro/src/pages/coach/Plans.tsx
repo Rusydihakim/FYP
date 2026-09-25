@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { PlusSquare, Clock, Users } from 'lucide-react';
-import '../../styles/CoachPlans.css';
 
 export default function Plans() {
   const plans = [
@@ -10,17 +9,17 @@ export default function Plans() {
   ];
 
   return (
-    <div className="coach-plans-page">
-      <div className="coach-plans-header">
-        <h1 className="coach-plans-title">Workout Plans</h1>
-        <Link to="/coach/plans/new" className="coach-plans-create-btn">
+    <div className="space-y-6 text-text">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-display font-bold">Workout Plans</h1>
+        <Link to="/coach/plans/new" className="bg-green-500 hover:bg-green-400 text-bg font-semibold px-4 py-2 rounded-lg transition inline-flex items-center">
           <PlusSquare className="h-5 w-5 mr-2" /> Create New Plan
         </Link>
       </div>
 
-      <div className="coach-plans-grid">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {plans.map((plan) => (
-          <div key={plan.id} className="coach-plans-card">
+          <div key={plan.id} className="bg-surface2 border border-border rounded-xl overflow-hidden hover:border-green-500 transition-colors group">
             <div className="p-6 border-b border-border">
               <div className="flex justify-between items-start mb-4">
                 <h2 className="text-xl font-bold font-display text-white">{plan.title}</h2>

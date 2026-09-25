@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Send, CheckCircle2, Plus, Trash2, Calendar, Dumbbell, Award, Loader2, Sparkles, AlertCircle } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
 import { useAuth } from '../../hooks/useAuth';
-import '../../styles/CoachAssign.css';
 
 interface ExerciseInput {
   name: string;
@@ -262,7 +261,7 @@ export default function Assign() {
   };
 
   return (
-    <div className="coach-assign-page">
+    <div className="max-w-4xl mx-auto space-y-6 text-text">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-display font-bold text-white">Workout Assignments</h1>
         

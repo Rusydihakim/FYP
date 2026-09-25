@@ -24,7 +24,6 @@ import {
   Bar,
   Cell
 } from 'recharts';
-import '../../styles/AdminDashboard.css';
 
 interface RecentUser {
   id: string;

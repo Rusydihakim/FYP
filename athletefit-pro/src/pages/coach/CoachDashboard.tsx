@@ -26,7 +26,6 @@ import {
 } from 'recharts';
 import { useAuth } from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
-import '../../styles/CoachDashboard.css';
 
 export default function CoachDashboard() {
   const { profile } = useAuth();
@@ -73,7 +72,7 @@ export default function CoachDashboard() {
   ];
 
   return (
-    <div className="coach-dashboard-container">
+    <div className="space-y-6 text-[#EEF3FA] max-w-[1600px] mx-auto pb-12">
       
       {/* ──────────────── 1. HERO GREETING BANNER ──────────────── */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[#091224] border border-[#162744] p-6 rounded-2xl relative overflow-hidden shadow-lg">

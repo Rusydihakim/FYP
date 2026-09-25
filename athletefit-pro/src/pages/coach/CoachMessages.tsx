@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Send, Search } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
 import { useAuth } from '../../hooks/useAuth';
-import '../../styles/CoachMessages.css';
 
 export default function CoachMessages() {
   const { user } = useAuth();
@@ -76,10 +75,10 @@ export default function CoachMessages() {
   };
 
   return (
-    <div className="coach-messages-container">
+    <div className="h-[calc(100vh-8rem)] flex bg-surface2 border border-border rounded-xl overflow-hidden text-text">
       
       {/* Sidebar Threads */}
-      <div className="coach-messages-sidebar">
+      <div className="w-80 border-r border-border bg-surface flex flex-col">
         <div className="p-4 border-b border-border">
           <div className="relative">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-500" />

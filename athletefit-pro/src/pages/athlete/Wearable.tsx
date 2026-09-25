@@ -1,7 +1,7 @@
 import { Activity, Watch, Link as LinkIcon, CheckCircle2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getFitbitAuthUrl, extractFitbitToken, fetchFitbitData } from '../../lib/fitbit';
-import '../../styles/AthleteWearable.css';
+
 
 export default function Wearable() {
   const [connected, setConnected] = useState(false);
@@ -30,8 +30,8 @@ export default function Wearable() {
   };
 
   return (
-    <div className="athlete-wearable-page">
-      <h1 className="athlete-wearable-title">Wearable Sync</h1>
+    <div className="space-y-6 text-text max-w-4xl mx-auto">
+      <h1 className="text-3xl font-display font-bold">Wearable Sync</h1>
 
       {!connected ? (
         <div className="bg-surface2 border border-border p-8 rounded-xl text-center">

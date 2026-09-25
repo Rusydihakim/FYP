@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Brain, Search, Plus, GripVertical, Trash2 } from 'lucide-react';
 import { generateWorkoutPlan } from '../../lib/api';
-import '../../styles/PlanBuilder.css';
 
 
 export default function PlanBuilder() {
@@ -50,9 +49,9 @@ export default function PlanBuilder() {
   };
 
   return (
-    <div className="plan-builder-page">
-      <div className="plan-builder-header">
-        <h1 className="plan-builder-title">Plan Builder</h1>
+    <div className="space-y-6 text-text max-w-5xl mx-auto">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-display font-bold">Plan Builder</h1>
         <div className="flex gap-3">
           <button 
             onClick={() => navigate('/coach/plans')}
