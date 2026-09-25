@@ -1,0 +1,42 @@
+@reference "../index.css";
+
+/* Athlete Wearable Styles */
+.athlete-wearable-page {
+  @apply space-y-6 text-text max-w-4xl mx-auto;
+}
+
+.athlete-wearable-title {
+  @apply text-3xl font-display font-bold;
+}
+
+.athlete-wearable-connect-card {
+  @apply bg-surface-2 border border-border p-8 rounded-xl text-center;
+}
+
+.athlete-wearable-icon-wrap {
+  @apply mx-auto w-20 h-20 bg-blue-900/30 rounded-full flex items-center justify-center mb-6;
+}
+
+.athlete-wearable-connect-title {
+  @apply text-2xl font-bold text-white mb-2 font-display;
+}
+
+.athlete-wearable-connect-desc {
+  @apply text-gray-400 max-w-md mx-auto mb-8;
+}
+
+.athlete-wearable-auth-btn {
+  @apply bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg inline-flex items-center transition disabled:opacity-50;
+}
+
+.athlete-wearable-connected-banner {
+  @apply bg-green-900/20 border border-green-500 p-6 rounded-xl flex items-center justify-between;
+}
+
+.athlete-wearable-table-card {
+  @apply bg-surface-2 border border-border rounded-xl overflow-hidden;
+}
+
+.athlete-wearable-table-header {
+  @apply p-4 bg-surface border-b border-border;
+}

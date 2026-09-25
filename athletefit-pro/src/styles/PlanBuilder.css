@@ -1,0 +1,26 @@
+@reference "../index.css";
+
+/* Plan Builder Styles */
+.plan-builder-page {
+  @apply space-y-6 text-text max-w-5xl mx-auto;
+}
+
+.plan-builder-header {
+  @apply flex justify-between items-center;
+}
+
+.plan-builder-title {
+  @apply text-3xl font-display font-bold;
+}
+
+.plan-builder-card {
+  @apply bg-surface-2 p-6 rounded-xl border border-border space-y-6;
+}
+
+.plan-builder-ai-banner {
+  @apply bg-blue-900/20 border border-blue-500/30 p-6 rounded-xl flex items-center justify-between;
+}
+
+.plan-builder-ai-btn {
+  @apply bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 px-4 rounded-lg flex items-center transition disabled:opacity-50;
+}

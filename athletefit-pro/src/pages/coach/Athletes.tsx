@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AthleteRow } from '../../components/ui/AthleteRow';
 import { Search, Filter, Loader2 } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
+import '../../styles/CoachAthletes.css';
 
 export default function Athletes() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -81,15 +82,15 @@ export default function Athletes() {
   );
 
   return (
-    <div className="space-y-6 text-text">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-display font-bold">My Athletes</h1>
+    <div className="coach-athletes-page">
+      <div className="coach-athletes-header">
+        <h1 className="coach-athletes-title">My Athletes</h1>
         <button className="bg-green-500 hover:bg-green-400 text-bg font-semibold px-4 py-2 rounded-lg transition">
           + Add Athlete
         </button>
       </div>
 
-      <div className="bg-surface2 rounded-xl border border-border overflow-hidden">
+      <div className="coach-athletes-table-container">
         <div className="p-4 border-b border-border flex space-x-4">
           <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

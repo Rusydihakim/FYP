@@ -6,6 +6,7 @@ import {
   Plus
 } from 'lucide-react';
 import { supabase } from '../../utils/supabase';
+import '../../styles/AthleteDetail.css';
 
 export default function AthleteDetail() {
   const { id } = useParams();
@@ -141,8 +142,8 @@ export default function AthleteDetail() {
     : '0';
 
   return (
-    <div className="space-y-6 text-text max-w-6xl mx-auto">
-      <Link to="/coach/athletes" className="text-gray-400 hover:text-white inline-flex items-center text-sm transition">
+    <div className="athlete-detail-page">
+      <Link to="/coach/athletes" className="athlete-detail-back-link">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to Athletes
       </Link>
 

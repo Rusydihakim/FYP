@@ -1,0 +1,38 @@
+@reference "../index.css";
+
+/* Coach Assign Workouts Styles */
+.coach-assign-page {
+  @apply space-y-6 text-text max-w-4xl mx-auto pb-12;
+}
+
+.coach-assign-header {
+  @apply flex justify-between items-center;
+}
+
+.coach-assign-title {
+  @apply text-3xl font-display font-bold text-white;
+}
+
+.coach-assign-subtitle {
+  @apply text-sm text-gray-400 mt-1;
+}
+
+.coach-assign-tabs {
+  @apply flex bg-surface-2 p-1.5 rounded-xl border border-border w-fit;
+}
+
+.coach-assign-tab-btn {
+  @apply px-5 py-2 rounded-lg font-semibold text-sm transition-all flex items-center gap-2;
+}
+
+.coach-assign-tab-btn-active {
+  @apply bg-green-500 text-bg shadow-lg shadow-green-500/20;
+}
+
+.coach-assign-tab-btn-inactive {
+  @apply text-gray-400 hover:text-white;
+}
+
+.coach-assign-card {
+  @apply bg-surface-2 border border-border rounded-xl p-6 sm:p-8 space-y-6 shadow-xl;
+}

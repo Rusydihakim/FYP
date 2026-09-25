@@ -1,0 +1,38 @@
+@reference "../index.css";
+
+/* Coach Athletes Styles */
+.coach-athletes-page {
+  @apply space-y-6 text-text;
+}
+
+.coach-athletes-header {
+  @apply flex flex-col md:flex-row md:items-center justify-between gap-4;
+}
+
+.coach-athletes-title {
+  @apply text-3xl font-display font-bold;
+}
+
+.coach-athletes-search-input {
+  @apply w-full md:w-64 bg-surface-2 border border-border rounded-lg pl-10 pr-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 text-sm;
+}
+
+.coach-athletes-table-container {
+  @apply bg-surface-2 rounded-xl border border-border overflow-hidden;
+}
+
+.coach-athletes-table {
+  @apply min-w-full divide-y divide-border;
+}
+
+.coach-athletes-thead {
+  @apply bg-surface;
+}
+
+.coach-athletes-th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider;
+}
+
+.coach-athletes-th-right {
+  @apply px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider;
+}

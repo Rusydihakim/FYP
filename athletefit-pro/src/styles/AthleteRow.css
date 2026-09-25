@@ -1,0 +1,70 @@
+@reference "../index.css";
+
+/* AthleteRow Component Styles */
+.athlete-row {
+  @apply hover:bg-surface-2 transition-colors;
+}
+
+.athlete-row-cell {
+  @apply px-6 py-4 whitespace-nowrap;
+}
+
+.athlete-row-info {
+  @apply flex items-center;
+}
+
+.athlete-row-avatar-wrap {
+  @apply flex-shrink-0 h-10 w-10;
+}
+
+.athlete-row-avatar {
+  @apply h-10 w-10 rounded-full bg-blue-900 border border-blue-700 flex items-center justify-center text-blue-200 font-bold;
+}
+
+.athlete-row-name-wrap {
+  @apply ml-4;
+}
+
+.athlete-row-name {
+  @apply text-sm font-medium text-text;
+}
+
+.athlete-row-badge {
+  @apply px-2 inline-flex text-xs leading-5 font-semibold rounded-full capitalize;
+}
+
+.athlete-row-badge-beginner {
+  @apply bg-blue-100/10 text-blue-200;
+}
+
+.athlete-row-badge-intermediate {
+  @apply bg-green-100/10 text-green-300;
+}
+
+.athlete-row-badge-advanced {
+  @apply bg-danger/10 text-danger;
+}
+
+.athlete-row-plan {
+  @apply text-sm text-gray-300;
+}
+
+.athlete-row-last-active {
+  @apply text-sm text-gray-500 font-mono;
+}
+
+.athlete-row-action-cell {
+  @apply px-6 py-4 whitespace-nowrap text-right text-sm font-medium;
+}
+
+.athlete-row-view-link {
+  @apply text-blue-400 hover:text-blue-300 inline-flex items-center;
+}
+
+.athlete-row-arrow-icon {
+  @apply ml-1 h-4 w-4 opacity-0 transition-opacity;
+}
+
+.athlete-row:hover .athlete-row-arrow-icon {
+  @apply opacity-100;
+}

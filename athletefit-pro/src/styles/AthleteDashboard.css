@@ -1,0 +1,86 @@
+@reference "../index.css";
+
+/* Athlete Dashboard Styles */
+.athlete-dashboard-container {
+  @apply space-y-6 text-[#EEF3FA] max-w-[1600px] mx-auto pb-12;
+}
+
+.athlete-hero-card {
+  @apply bg-gradient-to-r from-[#0C1B33] via-[#09152B] to-[#050B18] border border-[#162744] rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl;
+}
+
+.athlete-hero-ambient {
+  @apply absolute -right-20 -top-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none;
+}
+
+.athlete-hero-badge {
+  @apply inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-[11px] font-mono text-cyan-300 font-semibold uppercase tracking-wider;
+}
+
+.athlete-hero-title {
+  @apply text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-white tracking-wide;
+}
+
+.athlete-hero-subtitle {
+  @apply text-sm text-gray-400 mt-2 max-w-2xl leading-relaxed;
+}
+
+.athlete-sync-btn {
+  @apply px-4 py-2.5 rounded-xl bg-[#091224] hover:bg-[#0D1B36] border border-[#162744] hover:border-cyan-500/50 text-white font-semibold text-xs flex items-center space-x-2 transition-all cursor-pointer shadow-md;
+}
+
+.athlete-action-btn-primary {
+  @apply px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-green-300 text-slate-950 font-bold text-xs flex items-center space-x-2 shadow-[0_0_25px_rgba(6,182,212,0.35)] transition-all cursor-pointer;
+}
+
+.athlete-metrics-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6;
+}
+
+.athlete-metric-card {
+  @apply bg-[#080E1C] border border-[#14233D] hover:border-[#1E365E] rounded-2xl p-5 sm:p-6 transition-all duration-300 relative overflow-hidden;
+}
+
+.athlete-metric-header {
+  @apply flex justify-between items-start mb-4;
+}
+
+.athlete-metric-title {
+  @apply text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold;
+}
+
+.athlete-metric-value {
+  @apply text-2xl sm:text-3xl font-display font-black text-white transition-colors;
+}
+
+.athlete-metric-card:hover .athlete-metric-value {
+  @apply text-cyan-300;
+}
+
+.athlete-metric-unit {
+  @apply text-xs text-gray-400 font-normal ml-1 font-sans;
+}
+
+.athlete-chart-panel {
+  @apply bg-[#080E1C] border border-[#14233D] rounded-2xl p-6 shadow-xl;
+}
+
+.athlete-chart-header {
+  @apply flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6;
+}
+
+.athlete-chart-title {
+  @apply text-lg font-display font-bold text-white tracking-wide flex items-center space-x-2;
+}
+
+.athlete-timeframe-btn {
+  @apply px-3 py-1.5 rounded-lg text-xs font-semibold transition-all;
+}
+
+.athlete-timeframe-btn-active {
+  @apply bg-cyan-500/20 text-cyan-300 border border-cyan-500/40;
+}
+
+.athlete-timeframe-btn-inactive {
+  @apply text-gray-400 hover:text-white;
+}

@@ -1,0 +1,18 @@
+@reference "../index.css";
+
+/* PageLayout Component Styles */
+.page-layout-root {
+  @apply min-h-screen bg-[#050811] text-[#EEF3FA] selection:bg-cyan-500 selection:text-black font-sans relative;
+}
+
+.page-layout-ambient-glow {
+  @apply fixed top-0 left-64 right-0 h-[400px] bg-gradient-to-b from-cyan-500/8 via-blue-600/5 to-transparent blur-[120px] pointer-events-none -z-10;
+}
+
+.page-layout-content-wrapper {
+  @apply pl-64 flex flex-col min-h-screen;
+}
+
+.page-layout-main {
+  @apply flex-1 p-6 lg:p-8 overflow-y-auto;
+}

@@ -1,5 +1,6 @@
 import { Play, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
+import '../../styles/AthleteWorkouts.css';
 
 export default function Workouts() {
   const [showModal, setShowModal] = useState(false);
@@ -20,8 +21,8 @@ export default function Workouts() {
   ];
 
   return (
-    <div className="space-y-6 text-text">
-      <h1 className="text-3xl font-display font-bold">My Workouts</h1>
+    <div className="athlete-workouts-page">
+      <h1 className="athlete-workouts-title">My Workouts</h1>
 
       {plans.map(plan => (
         <div key={plan.id} className="bg-surface2 border border-border rounded-xl overflow-hidden">

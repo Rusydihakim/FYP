@@ -1,4 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import '../../styles/CoachReports.css';
 
 export default function Reports() {
   const complianceData = [
@@ -20,10 +21,10 @@ export default function Reports() {
   ];
 
   return (
-    <div className="space-y-6 text-text">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-display font-bold">Reports & Analytics</h1>
-        <button className="bg-surface2 border border-border text-gray-300 px-4 py-2 rounded-lg hover:bg-surface transition">
+    <div className="coach-reports-page">
+      <div className="coach-reports-header">
+        <h1 className="coach-reports-title">Reports & Analytics</h1>
+        <button className="coach-reports-export-btn">
           Export Report
         </button>
       </div>

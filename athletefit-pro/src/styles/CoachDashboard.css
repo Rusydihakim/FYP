@@ -1,0 +1,78 @@
+@reference "../index.css";
+
+/* Coach Dashboard Styles */
+.coach-dashboard-container {
+  @apply space-y-6 text-[#EEF3FA] max-w-[1600px] mx-auto pb-12;
+}
+
+.coach-hero-banner {
+  @apply bg-gradient-to-r from-[#0C1B33] via-[#09152B] to-[#050B18] border border-[#162744] rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl;
+}
+
+.coach-hero-glow {
+  @apply absolute -right-20 -top-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none;
+}
+
+.coach-hero-badge {
+  @apply inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-[11px] font-mono text-cyan-300 font-semibold uppercase tracking-wider;
+}
+
+.coach-hero-title {
+  @apply text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-white tracking-wide;
+}
+
+.coach-hero-subtitle {
+  @apply text-sm text-gray-400 mt-2 max-w-2xl leading-relaxed;
+}
+
+.coach-metrics-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6;
+}
+
+.coach-metric-card {
+  @apply bg-[#080E1C] border border-[#14233D] hover:border-[#1E365E] rounded-2xl p-5 sm:p-6 transition-all duration-300 relative overflow-hidden;
+}
+
+.coach-metric-header {
+  @apply flex justify-between items-start mb-4;
+}
+
+.coach-metric-title {
+  @apply text-xs font-mono uppercase tracking-wider text-gray-400 font-semibold;
+}
+
+.coach-metric-value {
+  @apply text-2xl sm:text-3xl font-display font-black text-white transition-colors;
+}
+
+.coach-metric-card:hover .coach-metric-value {
+  @apply text-cyan-300;
+}
+
+.coach-chart-panel {
+  @apply bg-[#080E1C] border border-[#14233D] rounded-2xl p-6 shadow-xl;
+}
+
+.coach-chart-header {
+  @apply flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6;
+}
+
+.coach-chart-title {
+  @apply text-lg font-display font-bold text-white tracking-wide flex items-center space-x-2;
+}
+
+.coach-timeframe-btn {
+  @apply px-3 py-1.5 rounded-lg text-xs font-semibold transition-all;
+}
+
+.coach-timeframe-btn-active {
+  @apply bg-cyan-500/20 text-cyan-300 border border-cyan-500/40;
+}
+
+.coach-timeframe-btn-inactive {
+  @apply text-gray-400 hover:text-white;
+}
+
+.coach-flagged-card {
+  @apply bg-[#080E1C] border border-[#14233D] rounded-2xl p-6 shadow-xl;
+}

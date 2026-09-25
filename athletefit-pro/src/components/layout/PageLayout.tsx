@@ -1,15 +1,16 @@
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
+import '../../styles/PageLayout.css';
 
 export function PageLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#050811] text-[#EEF3FA] selection:bg-cyan-500 selection:text-black font-sans relative">
+    <div className="page-layout-root">
       {/* Background ambient lighting */}
-      <div className="fixed top-0 left-64 right-0 h-[400px] bg-gradient-to-b from-cyan-500/8 via-blue-600/5 to-transparent blur-[120px] pointer-events-none -z-10" />
+      <div className="page-layout-ambient-glow" />
       <Sidebar />
-      <div className="pl-64 flex flex-col min-h-screen">
+      <div className="page-layout-content-wrapper">
         <Topbar />
-        <main className="flex-1 p-6 lg:p-8 overflow-y-auto">
+        <main className="page-layout-main">
           {children}
         </main>
       </div>

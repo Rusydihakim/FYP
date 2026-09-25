@@ -1,0 +1,62 @@
+@reference "../index.css";
+
+/* Admin Settings Styles */
+.admin-settings-page {
+  @apply space-y-6 text-text max-w-4xl;
+}
+
+.admin-settings-title {
+  @apply text-3xl font-display font-bold;
+}
+
+.admin-settings-card {
+  @apply bg-surface-2 rounded-xl border border-border overflow-hidden;
+}
+
+.admin-settings-header {
+  @apply p-6 border-b border-border;
+}
+
+.admin-settings-card-title {
+  @apply text-xl font-bold font-display text-white mb-1;
+}
+
+.admin-settings-card-subtitle {
+  @apply text-sm text-gray-400;
+}
+
+.admin-settings-body {
+  @apply p-6 space-y-6;
+}
+
+.admin-settings-field-label {
+  @apply block text-sm font-medium text-gray-300 mb-2;
+}
+
+.admin-settings-input {
+  @apply w-full bg-surface border border-border rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500;
+}
+
+.admin-settings-hint {
+  @apply text-xs text-gray-500 mt-1;
+}
+
+.admin-settings-footer {
+  @apply p-4 bg-surface border-t border-border flex justify-end;
+}
+
+.admin-settings-save-btn {
+  @apply bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg transition;
+}
+
+.admin-settings-checkbox-list {
+  @apply p-6 space-y-4;
+}
+
+.admin-settings-checkbox-item {
+  @apply flex items-center space-x-3 cursor-pointer;
+}
+
+.admin-settings-checkbox {
+  @apply h-5 w-5 text-blue-500 rounded border-border bg-surface;
+}
