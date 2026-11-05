@@ -1,0 +1,12 @@
+{
+  "name": "@athletefit/mobile",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@athletefit/database": "*",
+    "@athletefit/sport-configs": "*",
+    "@react-native-async-storage/async-storage": "^1.23.1",
+    "@supabase/supabase-js": "^2.45.0",
+    "react-native-url-polyfill": "^2.0.0"
+  }
+}

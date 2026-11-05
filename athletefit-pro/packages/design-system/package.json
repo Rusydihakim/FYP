@@ -1,0 +1,8 @@
+{
+  "name": "@athletefit/design-system",
+  "version": "1.0.0",
+  "private": true,
+  "exports": {
+    "./styles/theme.css": "./styles/theme.css"
+  }
+}

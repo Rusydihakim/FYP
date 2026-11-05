@@ -1,0 +1,171 @@
+/* ==========================================================================
+   AthleteFit Pro — Shared Gradient 04 Design Tokens (@athletefit/design-system)
+   Specification: document /website/design_website.md (Section 4.1 & 4.2)
+   ========================================================================== */
+
+@layer base, theme, layout, components, utilities;
+
+@layer theme {
+  :root {
+    color-scheme: light dark;
+
+    /* Tier 1: Literal Palette Tokens — Gradient 04 */
+    --color-volt-lime: #D8F878;
+    --color-electric-orchid: #E47CB8;
+    --color-royal-violet: #9448B0;
+    --color-deep-indigo: #332277;
+
+    /* Light Mode Literal Surfaces & Text */
+    --color-soft-lilac-canvas: #FAF8FD;
+    --color-pure-white: #FFFFFF;
+    --color-midnight-indigo: #1E1545;
+    --color-slate-violet: #695696;
+    --color-soft-lilac-border: #E6DCF5;
+
+    /* Dark Mode Literal Surfaces & Text */
+    --color-night-indigo: #160E33;
+    --color-elevated-indigo: #251852;
+    --color-ice-lilac: #F5F2FC;
+    --color-muted-lavender: #A898D0;
+    --color-border-purple: #422D85;
+
+    /* Readiness & Alert Literal Tokens */
+    --color-cleared-light: #16A34A;
+    --color-cleared-dark: #4ADE80;
+    --color-modified-light: #EA580C;
+    --color-modified-dark: #FB923C;
+    --color-critical-light: #DC2626;
+    --color-critical-dark: #F87171;
+    --color-wearable-online-light: #059669;
+    --color-wearable-online-dark: #34D399;
+    --color-wearable-stale-light: #64748B;
+    --color-wearable-stale-dark: #94A3B8;
+
+    /* Signature Gradient Token */
+    --gradient-signature: linear-gradient(
+      135deg,
+      #D8F878 0%,
+      #E47CB8 35%,
+      #9448B0 70%,
+      #332277 100%
+    );
+
+    /* Tier 2: Semantic Portal Tokens (Default to Light) */
+    --accent-primary: var(--color-royal-violet);
+    --accent-primary-contrast: var(--color-pure-white);
+    --accent-secondary: var(--color-electric-orchid);
+    --accent-tertiary: var(--color-deep-indigo);
+
+    --bg-app: var(--color-soft-lilac-canvas);
+    --bg-surface: var(--color-pure-white);
+    --bg-surface-elevated: #F3EEF9;
+    --bg-surface-hover: #EDE5F8;
+
+    --text-primary: var(--color-midnight-indigo);
+    --text-muted: var(--color-slate-violet);
+    --border-divider: var(--color-soft-lilac-border);
+
+    --status-cleared: var(--color-cleared-light);
+    --status-modified: var(--color-modified-light);
+    --status-critical: var(--color-critical-light);
+    --status-wearable-online: var(--color-wearable-online-light);
+    --status-wearable-stale: var(--color-wearable-stale-light);
+
+    --scrollbar-track: var(--color-soft-lilac-canvas);
+    --scrollbar-thumb: var(--color-soft-lilac-border);
+
+    @media (prefers-color-scheme: dark) {
+      --accent-primary: var(--color-volt-lime);
+      --accent-primary-contrast: var(--color-midnight-indigo);
+      --accent-secondary: var(--color-electric-orchid);
+      --accent-tertiary: var(--color-royal-violet);
+
+      --bg-app: var(--color-night-indigo);
+      --bg-surface: var(--color-elevated-indigo);
+      --bg-surface-elevated: #2F1F66;
+      --bg-surface-hover: #382578;
+
+      --text-primary: var(--color-ice-lilac);
+      --text-muted: var(--color-muted-lavender);
+      --border-divider: var(--color-border-purple);
+
+      --status-cleared: var(--color-cleared-dark);
+      --status-modified: var(--color-modified-dark);
+      --status-critical: var(--color-critical-dark);
+      --status-wearable-online: var(--color-wearable-online-dark);
+      --status-wearable-stale: var(--color-wearable-stale-dark);
+
+      --scrollbar-track: var(--color-night-indigo);
+      --scrollbar-thumb: var(--color-border-purple);
+    }
+
+    @supports (color: light-dark(white, black)) {
+      --accent-primary: light-dark(var(--color-royal-violet), var(--color-volt-lime));
+      --accent-primary-contrast: light-dark(var(--color-pure-white), var(--color-midnight-indigo));
+      --accent-secondary: light-dark(var(--color-electric-orchid), var(--color-electric-orchid));
+      --accent-tertiary: light-dark(var(--color-deep-indigo), var(--color-royal-violet));
+
+      --bg-app: light-dark(var(--color-soft-lilac-canvas), var(--color-night-indigo));
+      --bg-surface: light-dark(var(--color-pure-white), var(--color-elevated-indigo));
+      --bg-surface-elevated: light-dark(#F3EEF9, #2F1F66);
+      --bg-surface-hover: light-dark(#EDE5F8, #382578);
+
+      --text-primary: light-dark(var(--color-midnight-indigo), var(--color-ice-lilac));
+      --text-muted: light-dark(var(--color-slate-violet), var(--color-muted-lavender));
+      --border-divider: light-dark(var(--color-soft-lilac-border), var(--color-border-purple));
+
+      --status-cleared: light-dark(var(--color-cleared-light), var(--color-cleared-dark));
+      --status-modified: light-dark(var(--color-modified-light), var(--color-modified-dark));
+      --status-critical: light-dark(var(--color-critical-light), var(--color-critical-dark));
+      --status-wearable-online: light-dark(var(--color-wearable-online-light), var(--color-wearable-online-dark));
+      --status-wearable-stale: light-dark(var(--color-wearable-stale-light), var(--color-wearable-stale-dark));
+
+      --scrollbar-track: light-dark(var(--color-soft-lilac-canvas), var(--color-night-indigo));
+      --scrollbar-thumb: light-dark(var(--color-soft-lilac-border), var(--color-border-purple));
+    }
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --accent-primary: var(--color-royal-violet);
+    --accent-primary-contrast: var(--color-pure-white);
+    --accent-secondary: var(--color-electric-orchid);
+    --accent-tertiary: var(--color-deep-indigo);
+    --bg-app: var(--color-soft-lilac-canvas);
+    --bg-surface: var(--color-pure-white);
+    --bg-surface-elevated: #F3EEF9;
+    --bg-surface-hover: #EDE5F8;
+    --text-primary: var(--color-midnight-indigo);
+    --text-muted: var(--color-slate-violet);
+    --border-divider: var(--color-soft-lilac-border);
+    --status-cleared: var(--color-cleared-light);
+    --status-modified: var(--color-modified-light);
+    --status-critical: var(--color-critical-light);
+    --status-wearable-online: var(--color-wearable-online-light);
+    --status-wearable-stale: var(--color-wearable-stale-light);
+    --scrollbar-track: var(--color-soft-lilac-canvas);
+    --scrollbar-thumb: var(--color-soft-lilac-border);
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --accent-primary: var(--color-volt-lime);
+    --accent-primary-contrast: var(--color-midnight-indigo);
+    --accent-secondary: var(--color-electric-orchid);
+    --accent-tertiary: var(--color-royal-violet);
+    --bg-app: var(--color-night-indigo);
+    --bg-surface: var(--color-elevated-indigo);
+    --bg-surface-elevated: #2F1F66;
+    --bg-surface-hover: #382578;
+    --text-primary: var(--color-ice-lilac);
+    --text-muted: var(--color-muted-lavender);
+    --border-divider: var(--color-border-purple);
+    --status-cleared: var(--color-cleared-dark);
+    --status-modified: var(--color-modified-dark);
+    --status-critical: var(--color-critical-dark);
+    --status-wearable-online: var(--color-wearable-online-dark);
+    --status-wearable-stale: var(--color-wearable-stale-dark);
+    --scrollbar-track: var(--color-night-indigo);
+    --scrollbar-thumb: var(--color-border-purple);
+  }
+}

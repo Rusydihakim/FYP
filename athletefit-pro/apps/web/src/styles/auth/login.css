@@ -1,0 +1,954 @@
+/* ==========================================================================
+   AthleteFit Pro — Unified Portal Gateway (Coach & Athlete) Styles
+   Stitch Screen ID: 8abf7d8d1ae5491e88b564e85b35b3e2
+   Follows Gradient 04 tokens from globals.css & @athletefit/design-system
+   ========================================================================== */
+
+@import "../globals.css";
+
+@layer components {
+  /* Root Gateway Page Container */
+  .gateway-page {
+    min-block-size: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+  }
+
+  /* Visually Hidden Utility for Screen Reader Announcements */
+  .visually-hidden:where(:not(:focus-within, :active)) {
+    position: absolute !important;
+    clip-path: inset(50%) !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Top System Telemetry Bar */
+  .gateway-topbar {
+    inline-size: 100%;
+    background-color: var(--bg-app);
+    border-block-end: 1px solid var(--border-divider);
+    padding-block: var(--space-sm);
+    padding-inline: var(--space-xl);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .gateway-brand-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .gateway-brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  .gateway-brand-dot {
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--accent-primary);
+    box-shadow: 0 0 10px color-mix(in oklab, var(--accent-primary), transparent 30%);
+  }
+
+  .gateway-brand-accent {
+    color: var(--accent-primary);
+  }
+
+  .gateway-version-pill {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding-block: 0.1875rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .gateway-lab-tag {
+    color: var(--text-muted);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .gateway-status-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .gateway-iot-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    padding-block: 0.25rem;
+    padding-inline: 0.625rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .gateway-pulse-dot {
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--status-cleared);
+    animation: gateway-pulse 2s infinite ease-in-out;
+  }
+
+  .gateway-iot-live {
+    color: var(--status-cleared);
+    font-family: var(--font-mono);
+  }
+
+  .gateway-security-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-muted);
+  }
+
+  .gateway-node-badge {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    padding-block: 0.1875rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Main 12-Column Split Grid */
+  .gateway-split-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(420px, 5fr);
+    inline-size: 100%;
+  }
+
+  @media (max-width: 1080px) {
+    .gateway-split-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* LEFT COLUMN: Rugby Telemetry & Readiness Showcase */
+  .gateway-showcase {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-app);
+    border-inline-end: 1px solid var(--border-divider);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-xl);
+  }
+
+  /* Ambient Gradient 04 Glow Orbs */
+  .gateway-glow-primary {
+    position: absolute;
+    inset-block-start: -8rem;
+    inset-inline-start: -8rem;
+    inline-size: 24rem;
+    block-size: 24rem;
+    border-radius: var(--radius-pill);
+    background: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--accent-primary), transparent 82%) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .gateway-glow-secondary {
+    position: absolute;
+    inset-block-end: -8rem;
+    inset-inline-end: -8rem;
+    inline-size: 24rem;
+    block-size: 24rem;
+    border-radius: var(--radius-pill);
+    background: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--accent-secondary), transparent 82%) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .gateway-showcase-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  /* Match Context Header Badge */
+  .gateway-match-pill {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+    padding-block: 0.375rem;
+    padding-inline: var(--space-md);
+    border-radius: var(--radius-pill);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    inline-size: fit-content;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .gateway-match-pill__icon {
+    color: var(--status-modified);
+  }
+
+  .gateway-match-pill__venue {
+    color: var(--text-muted);
+  }
+
+  .gateway-match-pill__status {
+    color: var(--status-cleared);
+    background-color: color-mix(in oklab, var(--status-cleared), transparent 86%);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    padding-block: 0.125rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .gateway-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+  }
+
+  .gateway-subheadline {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    max-inline-size: 62ch;
+  }
+
+  /* Live Telemetry Matrix Card */
+  .gateway-telemetry-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    box-shadow: 0 16px 36px -12px color-mix(in oklab, var(--color-midnight-indigo), transparent 65%);
+  }
+
+  .gateway-telemetry-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .gateway-telemetry-title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .gateway-telemetry-icon {
+    color: var(--accent-primary);
+    display: inline-flex;
+  }
+
+  .gateway-telemetry-title {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .gateway-telemetry-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .gateway-ingest-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    padding-block: 0.25rem;
+    padding-inline: 0.625rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+  }
+
+  /* ECG Waveform Panel */
+  .gateway-waveform-box {
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .gateway-waveform-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    font-size: 0.6875rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+  }
+
+  .gateway-waveform-sync {
+    color: var(--status-cleared);
+    font-weight: 600;
+  }
+
+  .gateway-waveform-svg {
+    inline-size: 100%;
+    block-size: 6rem;
+    color: var(--accent-primary);
+  }
+
+  .gateway-waveform-gridline {
+    stroke: var(--border-divider);
+    stroke-dasharray: 3 3;
+  }
+
+  .gateway-waveform-peak {
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+
+  /* 5-Card KPI Matrix Grid */
+  .gateway-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-xs);
+  }
+
+  @media (max-width: 768px) {
+    .gateway-kpi-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .gateway-kpi-tile {
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.25rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gateway-kpi-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+
+  .gateway-kpi-value {
+    font-family: var(--font-display);
+    font-size: 1.625rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-primary);
+  }
+
+  .gateway-kpi-value--cleared {
+    color: var(--status-cleared);
+  }
+
+  .gateway-kpi-value--accent {
+    color: var(--accent-primary);
+  }
+
+  .gateway-kpi-value--orchid {
+    color: var(--accent-secondary);
+  }
+
+  .gateway-kpi-unit {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-inline-start: 0.25rem;
+  }
+
+  .gateway-kpi-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--status-cleared);
+  }
+
+  .gateway-kpi-trend--accent {
+    color: var(--accent-primary);
+  }
+
+  /* Active Sensor Fleet Bar */
+  .gateway-sensor-bar {
+    padding-block-start: var(--space-sm);
+    border-block-start: 1px solid var(--border-divider);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
+  .gateway-sensor-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .gateway-sensor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    padding-block: 0.25rem;
+    padding-inline: 0.625rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.6875rem;
+    font-weight: 500;
+  }
+
+  .gateway-sensor-chip__meta {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+  }
+
+  /* Compliance & Security Footnote */
+  .gateway-compliance-footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .gateway-compliance-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .gateway-compliance-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .gateway-compliance-cert {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--accent-secondary);
+    font-weight: 600;
+  }
+
+  /* RIGHT COLUMN: Unified Authentication Console */
+  .gateway-auth-panel {
+    background-color: var(--bg-surface);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .gateway-auth-container {
+    max-inline-size: 28rem;
+    inline-size: 100%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  /* Role Switcher Segmented Control */
+  .gateway-role-switcher {
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    padding: 0.375rem;
+    border-radius: var(--radius-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.375rem;
+  }
+
+  .gateway-role-tab {
+    padding-block: 0.625rem;
+    padding-inline: var(--space-sm);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+  }
+
+  .gateway-role-tab:hover:not([aria-pressed="true"]) {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-hover);
+  }
+
+  .gateway-role-tab[data-role="athlete"][aria-pressed="true"] {
+    background-color: var(--accent-primary);
+    color: var(--accent-primary-contrast);
+  }
+
+  .gateway-role-tab[data-role="coach"][aria-pressed="true"] {
+    background-color: var(--accent-tertiary);
+    color: var(--color-ice-lilac);
+    border-color: var(--accent-secondary);
+  }
+
+  .gateway-2fa-pill {
+    background-color: color-mix(in oklab, var(--accent-secondary), transparent 78%);
+    color: var(--accent-secondary);
+    border: 1px solid color-mix(in oklab, var(--accent-secondary), transparent 50%);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
+    padding-block: 0.0625rem;
+    padding-inline: 0.375rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Form Header */
+  .gateway-form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .gateway-accreditation-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-primary);
+  }
+
+  .gateway-accreditation-tag[data-role="coach"] {
+    color: var(--accent-secondary);
+  }
+
+  .gateway-form-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .gateway-form-description {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  /* Form Fields */
+  .gateway-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .gateway-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .gateway-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
+  .gateway-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .gateway-domain-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+  }
+
+  .gateway-domain-badge[data-role="coach"] {
+    color: var(--accent-secondary);
+  }
+
+  .gateway-forgot-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+  }
+
+  .gateway-forgot-link:hover {
+    text-decoration: underline;
+  }
+
+  .gateway-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .gateway-input-icon {
+    position: absolute;
+    inset-inline-start: 0.875rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    display: inline-flex;
+  }
+
+  .gateway-input {
+    inline-size: 100%;
+    min-block-size: 3rem;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding-block: 0.75rem;
+    padding-inline-start: 2.75rem;
+    padding-inline-end: 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  .gateway-input--password {
+    padding-inline-end: 3rem;
+    font-family: var(--font-mono);
+  }
+
+  .gateway-input:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 1px;
+    border-color: var(--accent-primary);
+  }
+
+  .gateway-pass-toggle {
+    position: absolute;
+    inset-inline-end: 0.5rem;
+    min-inline-size: 2.25rem;
+    min-block-size: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .gateway-pass-toggle:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-hover);
+  }
+
+  /* Secondary Role-Specific Auth Box */
+  .gateway-secondary-box {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .gateway-secondary-fieldset {
+    margin: 0;
+  }
+
+  .gateway-secondary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
+  .gateway-secondary-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .gateway-secondary-status {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--status-cleared);
+  }
+
+  .gateway-secondary-status--timer {
+    color: var(--accent-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .gateway-secondary-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* 6-Digit TOTP Grid */
+  .gateway-totp-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-block-start: 0.25rem;
+  }
+
+  .gateway-totp-input {
+    block-size: 2.75rem;
+    inline-size: 100%;
+    text-align: center;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gateway-totp-input:focus-visible {
+    outline: 2px solid var(--accent-secondary);
+    outline-offset: 1px;
+    border-color: var(--accent-secondary);
+  }
+
+  /* Remember Device Checkbox Row */
+  .gateway-remember-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .gateway-checkbox {
+    inline-size: 1rem;
+    block-size: 1rem;
+    cursor: pointer;
+  }
+
+  /* Primary Submit Button */
+  .gateway-submit-btn {
+    inline-size: 100%;
+    min-block-size: 3.125rem;
+    padding-block: 0.875rem;
+    padding-inline: var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+    transition: filter 150ms ease, transform 100ms ease;
+    background-color: var(--accent-primary);
+    color: var(--accent-primary-contrast);
+    box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--accent-primary), transparent 60%);
+  }
+
+  .gateway-submit-btn[data-role="coach"] {
+    background-image: var(--gradient-signature);
+    color: var(--color-midnight-indigo);
+    box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--accent-secondary), transparent 55%);
+  }
+
+  .gateway-submit-btn:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+
+  .gateway-submit-btn:active:not(:disabled) {
+    transform: scale(0.99);
+  }
+
+  /* Footer Quick-Access Pathway Cards */
+  .gateway-footer-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-block-start: var(--space-xs);
+    border-block-start: 1px solid var(--border-divider);
+  }
+
+  .gateway-pairing-card {
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .gateway-pairing-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .gateway-pairing-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .gateway-pairing-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .gateway-code-btn {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-block: 0.4375rem;
+    padding-inline: 0.75rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 150ms ease;
+  }
+
+  .gateway-code-btn:hover:not(:disabled) {
+    background-color: var(--bg-surface-hover);
+  }
+
+  .gateway-bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .gateway-bottom-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: color 150ms ease;
+  }
+
+  .gateway-bottom-link:hover {
+    color: var(--accent-primary);
+  }
+
+  .gateway-ble-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+}
+
+@keyframes gateway-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
