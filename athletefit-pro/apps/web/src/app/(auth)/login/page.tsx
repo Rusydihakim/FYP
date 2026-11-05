@@ -85,7 +85,17 @@ export default function UnifiedPortalGatewayPage() {
       <header className="gateway-topbar">
         <div className="gateway-brand-group">
           <div className="gateway-brand-mark">
-            <span className="gateway-brand-dot" aria-hidden="true" />
+            <img
+              src="/assets/logo.jpg"
+              alt="AthleteFit Pro Logo"
+              style={{
+                width: '32px',
+                height: '32px',
+                objectFit: 'cover',
+                borderRadius: 'var(--radius-sm)',
+                boxShadow: '0 0 10px color-mix(in oklab, var(--accent-primary), transparent 50%)',
+              }}
+            />
             <span>
               AthleteFit<span className="gateway-brand-accent">PRO</span>
             </span>
@@ -281,6 +291,60 @@ export default function UnifiedPortalGatewayPage() {
         {/* RIGHT COLUMN: Unified Authentication Console */}
         <section className="gateway-auth-panel">
           <div className="gateway-auth-container">
+            {/* Brand Logo Presentation Card */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-md)',
+                padding: 'var(--space-sm) var(--space-md)',
+                backgroundColor: 'var(--bg-app)',
+                border: '1px solid var(--border-divider)',
+                borderRadius: 'var(--radius-lg)',
+                marginBottom: 'var(--space-md)',
+              }}
+            >
+              <img
+                src="/assets/logo.jpg"
+                alt="AthleteFit Pro Official Emblem"
+                style={{
+                  width: '52px',
+                  height: '52px',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-md)',
+                  flexShrink: 0,
+                  border: '1px solid var(--border-divider)',
+                  boxShadow: '0 4px 12px color-mix(in oklab, var(--accent-primary), transparent 80%)',
+                }}
+              />
+              <div>
+                <div
+                  style={{
+                    fontWeight: 800,
+                    fontSize: '1.0625rem',
+                    letterSpacing: '0.02em',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                  }}
+                >
+                  <span>AthleteFit</span>
+                  <span style={{ color: 'var(--accent-primary)' }}>PRO</span>
+                </div>
+                <div
+                  style={{
+                    fontSize: '0.6875rem',
+                    color: 'var(--text-muted)',
+                    fontWeight: 600,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Elevate Your Performance
+                </div>
+              </div>
+            </div>
+
             {/* Role Switcher Segmented Control */}
             <div
               className="gateway-role-switcher"

@@ -56,13 +56,15 @@ export default function CoachPortalLayout({
                 letterSpacing: '0.04em',
               }}
             >
-              <span
+              <img
+                src="/assets/logo.jpg"
+                alt="AthleteFit Pro Logo"
                 style={{
-                  width: '10px',
-                  height: '10px',
-                  borderRadius: '9999px',
-                  backgroundColor: 'var(--accent-primary)',
-                  boxShadow: '0 0 10px var(--accent-primary)',
+                  width: '28px',
+                  height: '28px',
+                  objectFit: 'cover',
+                  borderRadius: 'var(--radius-sm)',
+                  boxShadow: '0 0 8px color-mix(in oklab, var(--accent-primary), transparent 50%)',
                 }}
               />
               {!isSidebarCollapsed && (
