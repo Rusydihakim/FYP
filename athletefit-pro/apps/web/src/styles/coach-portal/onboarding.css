@@ -1,0 +1,931 @@
+/* ==========================================================================
+   AthleteFit Pro — Screen W-02: Organization & Performance Onboarding Styles
+   Specification: document /website/design_website.md (Screen W-02)
+   Stitch Screen ID: 26ca59d497ee48afa63d65044e76de80
+   Palette: Gradient 04 (Volt Lime, Electric Orchid, Royal Violet, Deep Indigo)
+   ========================================================================== */
+
+@import "../globals.css";
+
+@layer components {
+  /* Page Container */
+  .onboarding-wrapper {
+    position: relative;
+    inline-size: 100%;
+    min-block-size: 100dvh;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    padding-block: var(--space-xl);
+    padding-inline: var(--space-lg);
+  }
+
+  /* Ambient Glow Accents */
+  .onboarding-glow-top {
+    position: absolute;
+    inset-block-start: -6rem;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    inline-size: 45rem;
+    block-size: 22.5rem;
+    background-color: color-mix(in oklab, var(--accent-primary), transparent 88%);
+    filter: blur(120px);
+    pointer-events: none;
+    border-radius: var(--radius-pill);
+    z-index: 0;
+  }
+
+  .onboarding-glow-side {
+    position: absolute;
+    inset-block-start: 35%;
+    inset-inline-end: -10rem;
+    inline-size: 25rem;
+    block-size: 25rem;
+    background-color: color-mix(in oklab, var(--accent-secondary), transparent 85%);
+    filter: blur(140px);
+    pointer-events: none;
+    border-radius: var(--radius-pill);
+    z-index: 0;
+  }
+
+  /* Content Shell */
+  .onboarding-container {
+    position: relative;
+    z-index: 10;
+    max-inline-size: 75rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  /* Header & Breadcrumb */
+  .onboarding-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .onboarding-header-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .onboarding-brand-icon {
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    box-shadow: 0 4px 12px color-mix(in oklab, var(--accent-primary), transparent 85%);
+    overflow: hidden;
+  }
+
+  .onboarding-brand-icon img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .onboarding-breadcrumb-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .onboarding-meta-accent {
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+  }
+
+  .onboarding-meta-divider {
+    color: var(--text-muted);
+    opacity: 0.5;
+  }
+
+  .onboarding-meta-sub {
+    color: var(--text-muted);
+  }
+
+  .onboarding-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-block-start: 0.125rem;
+  }
+
+  /* Telemetry Heartbeat Status Pill */
+  .onboarding-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-pill);
+    padding-block: 0.375rem;
+    padding-inline: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .onboarding-pulse-dot {
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--status-cleared);
+    animation: onboarding-pulse 2s infinite ease-in-out;
+  }
+
+  .onboarding-status-engine {
+    color: var(--status-cleared);
+    font-family: var(--font-mono);
+  }
+
+  .onboarding-status-node {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+  }
+
+  /* Step Navigation Tracker */
+  .onboarding-stepper {
+    inline-size: 100%;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-xl);
+    padding: 0.625rem;
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+  }
+
+  .onboarding-stepper-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .onboarding-stepper-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .onboarding-step-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 180ms ease;
+    text-align: start;
+  }
+
+  .onboarding-step-card[data-active="true"] {
+    background-color: color-mix(in oklab, var(--accent-primary), transparent 88%);
+    border-color: color-mix(in oklab, var(--accent-primary), transparent 60%);
+  }
+
+  .onboarding-step-card[data-completed="true"] {
+    background-color: color-mix(in oklab, var(--status-cleared), transparent 90%);
+    border-color: color-mix(in oklab, var(--status-cleared), transparent 70%);
+  }
+
+  .onboarding-step-badge {
+    inline-size: 2rem;
+    block-size: 2rem;
+    border-radius: var(--radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    background-color: var(--bg-surface);
+    color: var(--text-muted);
+  }
+
+  .onboarding-step-card[data-active="true"] .onboarding-step-badge {
+    background-color: var(--accent-primary);
+    color: var(--accent-primary-contrast);
+    box-shadow: 0 0 12px color-mix(in oklab, var(--accent-primary), transparent 40%);
+  }
+
+  .onboarding-step-card[data-completed="true"] .onboarding-step-badge {
+    background-color: var(--status-cleared);
+    color: var(--color-midnight-indigo);
+  }
+
+  .onboarding-step-info {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    flex: 1;
+  }
+
+  .onboarding-step-meta {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+
+  .onboarding-step-card[data-active="true"] .onboarding-step-meta {
+    color: var(--accent-primary);
+  }
+
+  .onboarding-step-card[data-completed="true"] .onboarding-step-meta {
+    color: var(--status-cleared);
+  }
+
+  .onboarding-step-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .onboarding-step-icon {
+    margin-inline-start: auto;
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+
+  .onboarding-step-card[data-active="true"] .onboarding-step-icon {
+    color: var(--accent-primary);
+  }
+
+  /* Main 12-Column Split Grid */
+  .onboarding-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 8fr) minmax(360px, 4fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  @media (max-width: 1024px) {
+    .onboarding-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Core Card Shell */
+  .onboarding-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .onboarding-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .onboarding-tag-group {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .onboarding-tag-pill {
+    inline-size: 0.375rem;
+    block-size: 1rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--accent-primary);
+  }
+
+  .onboarding-tag-text {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+  }
+
+  .onboarding-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .onboarding-card-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Form Elements */
+  .onboarding-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .onboarding-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .onboarding-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .onboarding-required-star {
+    color: var(--status-critical);
+  }
+
+  .onboarding-sublabel {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .onboarding-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .onboarding-input-icon {
+    position: absolute;
+    inset-inline-start: 0.875rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    font-size: 1rem;
+  }
+
+  .onboarding-input {
+    inline-size: 100%;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding-block: 0.6875rem;
+    padding-inline-start: 2.5rem;
+    padding-inline-end: 1rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  .onboarding-input:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 1px;
+    border-color: var(--accent-primary);
+  }
+
+  .onboarding-select {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .onboarding-select-arrow {
+    position: absolute;
+    inset-inline-end: 0.875rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    font-size: 0.75rem;
+  }
+
+  .onboarding-two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 640px) {
+    .onboarding-two-col {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Logo Upload Dropzone */
+  .onboarding-dropzone {
+    background-color: var(--bg-app);
+    border: 1px dashed var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+
+  .onboarding-dropzone:hover {
+    background-color: var(--bg-surface-elevated);
+    border-color: var(--accent-primary);
+  }
+
+  .onboarding-dropzone-thumb {
+    inline-size: 4rem;
+    block-size: 4rem;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .onboarding-dropzone-thumb img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .onboarding-dropzone-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-inline-size: 0;
+  }
+
+  .onboarding-dropzone-main {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .onboarding-dropzone-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-block-start: 0.125rem;
+  }
+
+  .onboarding-dropzone-btn {
+    padding-block: 0.5rem;
+    padding-inline: 0.875rem;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 150ms ease;
+  }
+
+  .onboarding-dropzone-btn:hover {
+    background-color: var(--bg-surface-hover);
+  }
+
+  /* Credentials Grid */
+  .onboarding-credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+
+  @media (max-width: 640px) {
+    .onboarding-credentials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .onboarding-credential-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.875rem;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .onboarding-credential-card[data-checked="true"] {
+    background-color: color-mix(in oklab, var(--accent-primary), transparent 90%);
+    border-color: var(--accent-primary);
+  }
+
+  .onboarding-cred-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: 0.25rem;
+  }
+
+  .onboarding-cred-code {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .onboarding-cred-check {
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-muted);
+    border: 1px solid var(--border-divider);
+  }
+
+  .onboarding-credential-card[data-checked="true"] .onboarding-cred-check {
+    background-color: var(--accent-primary);
+    color: var(--color-midnight-indigo);
+    border-color: var(--accent-primary);
+  }
+
+  .onboarding-cred-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  .onboarding-cred-status {
+    margin-block-start: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--status-cleared);
+  }
+
+  /* Diagnostics Bar */
+  .onboarding-diag-banner {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-xl);
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .onboarding-diag-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .onboarding-diag-icon {
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    color: var(--accent-primary);
+  }
+
+  .onboarding-diag-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .onboarding-diag-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .onboarding-diag-badge {
+    padding-block: 0.25rem;
+    padding-inline: 0.625rem;
+    border-radius: var(--radius-pill);
+    background-color: color-mix(in oklab, var(--status-cleared), transparent 85%);
+    color: var(--status-cleared);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+  }
+
+  /* Right Column Preview Cards */
+  .onboarding-aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .onboarding-top-line {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 3px;
+    background: var(--gradient-signature);
+  }
+
+  .onboarding-preview-tag {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+  }
+
+  .onboarding-preview-badge {
+    padding-block: 0.1875rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* Unit Toggle in Preview */
+  .onboarding-unit-box {
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .onboarding-unit-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .onboarding-unit-val {
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+  }
+
+  .onboarding-segmented-switch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 2px;
+    background-color: var(--bg-surface-elevated);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-divider);
+  }
+
+  .onboarding-segmented-btn {
+    padding-block: 0.3125rem;
+    border: none;
+    border-radius: calc(var(--radius-sm) - 2px);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--text-muted);
+    transition: all 150ms ease;
+  }
+
+  .onboarding-segmented-btn[data-active="true"] {
+    background-color: var(--accent-primary);
+    color: var(--color-midnight-indigo);
+  }
+
+  /* Interval Pills */
+  .onboarding-interval-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.375rem;
+  }
+
+  .onboarding-interval-pill {
+    padding-block: 0.4375rem;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .onboarding-interval-pill[data-active="true"] {
+    background-color: color-mix(in oklab, var(--accent-secondary), transparent 85%);
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
+  }
+
+  /* Step 3: Squad Code & QR Box */
+  .onboarding-invite-box {
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .onboarding-code-banner {
+    inline-size: 100%;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding-block: 0.625rem;
+    padding-inline: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .onboarding-squad-code {
+    font-family: var(--font-mono);
+    font-size: 1.375rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+  }
+
+  .onboarding-copy-btn {
+    padding: 0.375rem 0.625rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    color: var(--text-primary);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 150ms ease;
+  }
+
+  .onboarding-copy-btn:hover {
+    background-color: var(--bg-surface-hover);
+  }
+
+  .onboarding-copy-btn[data-copied="true"] {
+    background-color: var(--status-cleared);
+    color: var(--color-midnight-indigo);
+    border-color: var(--status-cleared);
+  }
+
+  .onboarding-qr-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    background-color: #FFFFFF;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .onboarding-qr-frame svg {
+    inline-size: 6rem;
+    block-size: 6rem;
+    color: #160E33;
+  }
+
+  .onboarding-qr-caption {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Footer Action Toolbar */
+  .onboarding-footer {
+    inline-size: 100%;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-xl);
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+  }
+
+  .onboarding-draft-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .onboarding-draft-btn {
+    padding-block: 0.625rem;
+    padding-inline: 1rem;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    color: var(--text-primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: background-color 150ms ease;
+  }
+
+  .onboarding-draft-btn:hover {
+    background-color: var(--bg-surface-hover);
+  }
+
+  .onboarding-draft-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .onboarding-footer-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .onboarding-skip-link {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: color 150ms ease;
+  }
+
+  .onboarding-skip-link:hover {
+    color: var(--text-primary);
+  }
+
+  .onboarding-primary-btn {
+    padding-block: 0.75rem;
+    padding-inline: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    background-color: var(--accent-primary);
+    color: var(--accent-primary-contrast);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 6px 20px -4px color-mix(in oklab, var(--accent-primary), transparent 60%);
+    transition: filter 150ms ease, transform 100ms ease;
+  }
+
+  .onboarding-primary-btn:hover {
+    filter: brightness(1.06);
+  }
+
+  .onboarding-primary-btn:active {
+    transform: scale(0.99);
+  }
+}
+
+@keyframes onboarding-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
