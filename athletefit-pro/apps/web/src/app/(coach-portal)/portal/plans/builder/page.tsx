@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import '../../../../../styles/coach-portal/plan-builder.css';
 
 interface ExerciseItem {
   id: string;
@@ -41,107 +41,57 @@ export default function PlanBuilderPage() {
   );
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+    <div className="builder-container">
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
+      <div className="builder-header">
         <div>
-          <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)', fontWeight: 600 }}>
+          <span className="builder-screen-tag">
             [SCREEN W-05] RUGBY PLAN AUTHORING STUDIO
           </span>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Training Plan Studio</h1>
+          <h1 className="builder-title">Training Plan Studio</h1>
         </div>
 
-        <div style={{ display: 'flex', gap: 'var(--space-xs)' }}>
-          <button
-            type="button"
-            style={{
-              paddingBlock: '0.5rem',
-              paddingInline: '1rem',
-              backgroundColor: 'var(--accent-primary)',
-              color: 'var(--color-midnight-indigo)',
-              border: 'none',
-              borderRadius: 'var(--radius-md)',
-              fontWeight: 700,
-              fontSize: '0.875rem',
-              cursor: 'pointer',
-            }}
-          >
+        <div>
+          <button type="button" className="builder-save-btn">
             💾 Save Rugby Template
           </button>
         </div>
       </div>
 
       {/* 3-Column Studio Grid */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(280px, 1fr) minmax(360px, 1.4fr) minmax(260px, 0.9fr)',
-          gap: 'var(--space-md)',
-          alignItems: 'start',
-        }}
-      >
+      <div className="builder-grid">
         {/* Left Column: ExerciseDB API Library */}
-        <section style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-md)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-sm)' }}>
-            <h2 style={{ fontSize: '0.9375rem', fontWeight: 700 }}>ExerciseDB Library</h2>
-            <span style={{ fontSize: '0.6875rem', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)' }}>Rugby Presets</span>
+        <section className="builder-card">
+          <div className="builder-card-header">
+            <h2 className="builder-card-title">ExerciseDB Library</h2>
+            <span className="builder-card-meta">Rugby Presets</span>
           </div>
 
           {/* Category Filter */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: 'var(--space-md)' }}>
+          <div className="builder-categories">
             {['All', 'Scrum & Maul', 'Power', 'Speed', 'Injury Mitigation'].map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                style={{
-                  paddingBlock: '0.2rem',
-                  paddingInline: '0.5rem',
-                  borderRadius: 'var(--radius-pill)',
-                  border: '1px solid var(--border-divider)',
-                  backgroundColor: selectedCategory === cat ? 'var(--accent-secondary)' : 'var(--bg-app)',
-                  color: selectedCategory === cat ? 'var(--color-midnight-indigo)' : 'var(--text-muted)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                }}
+                className={`builder-category-chip ${selectedCategory === cat ? 'builder-category-chip--active' : ''}`}
               >
                 {cat}
               </button>
             ))}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
+          <div className="builder-exercise-list">
             {filteredExercises.map((ex) => (
-              <div
-                key={ex.id}
-                style={{
-                  padding: '0.625rem',
-                  backgroundColor: 'var(--bg-app)',
-                  border: '1px solid var(--border-divider)',
-                  borderRadius: 'var(--radius-md)',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}
-              >
+              <div key={ex.id} className="builder-exercise-item">
                 <div>
-                  <div style={{ fontSize: '0.8125rem', fontWeight: 600 }}>{ex.name}</div>
-                  <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>{ex.category}</div>
+                  <div className="builder-exercise-name">{ex.name}</div>
+                  <div className="builder-exercise-cat">{ex.category}</div>
                 </div>
                 <button
                   type="button"
                   onClick={() => addExercise(ex)}
-                  style={{
-                    backgroundColor: 'var(--bg-surface-elevated)',
-                    border: '1px solid var(--border-divider)',
-                    borderRadius: 'var(--radius-sm)',
-                    paddingBlock: '0.25rem',
-                    paddingInline: '0.5rem',
-                    fontSize: '0.75rem',
-                    cursor: 'pointer',
-                    fontWeight: 700,
-                  }}
+                  className="builder-add-btn"
                 >
                   + Add
                 </button>
@@ -151,10 +101,10 @@ export default function PlanBuilderPage() {
         </section>
 
         {/* Center Column: Interactive Workout Builder Canvas */}
-        <section style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-md)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-sm)' }}>
+        <section className="builder-card">
+          <div className="builder-card-header">
             <div>
-              <h2 style={{ fontSize: '0.9375rem', fontWeight: 700 }}>Active Session Canvas</h2>
+              <h2 className="builder-card-title">Active Session Canvas</h2>
               <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Target: MD-2 Explosive Power Block</p>
             </div>
             <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--status-cleared)', fontFamily: 'var(--font-mono)' }}>
@@ -162,25 +112,14 @@ export default function PlanBuilderPage() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
+          <div className="builder-canvas-list">
             {builderCanvas.map((ex, idx) => (
-              <div
-                key={`${ex.id}-${idx}`}
-                style={{
-                  padding: '0.875rem',
-                  backgroundColor: 'var(--bg-app)',
-                  border: '1px solid var(--border-divider)',
-                  borderRadius: 'var(--radius-md)',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-muted)' }}>0{idx + 1}</span>
+              <div key={`${ex.id}-${idx}`} className="builder-canvas-item">
+                <div className="builder-canvas-left">
+                  <span className="builder-canvas-index">0{idx + 1}</span>
                   <div>
-                    <div style={{ fontSize: '0.875rem', fontWeight: 700 }}>{ex.name}</div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                    <div className="builder-canvas-name">{ex.name}</div>
+                    <div className="builder-canvas-details">
                       {ex.defaultSets} sets × {ex.defaultReps} reps @ RPE 8.0
                     </div>
                   </div>
@@ -188,13 +127,7 @@ export default function PlanBuilderPage() {
                 <button
                   type="button"
                   onClick={() => removeExercise(idx)}
-                  style={{
-                    backgroundColor: 'transparent',
-                    border: 'none',
-                    color: 'var(--status-critical)',
-                    cursor: 'pointer',
-                    fontSize: '0.875rem',
-                  }}
+                  className="builder-remove-btn"
                 >
                   ✕
                 </button>
@@ -204,23 +137,27 @@ export default function PlanBuilderPage() {
         </section>
 
         {/* Right Column: AI Rugby Assistant / Volume Auditor */}
-        <section style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-md)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', marginBottom: 'var(--space-sm)' }}>
+        <section className="builder-card">
+          <div className="builder-auditor-title-row">
             <span>🤖</span>
-            <h2 style={{ fontSize: '0.9375rem', fontWeight: 700 }}>Rugby AI Volume Auditor</h2>
+            <h2 className="builder-card-title">Rugby AI Volume Auditor</h2>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)', fontSize: '0.8125rem' }}>
-            <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-app)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontWeight: 600, color: 'var(--status-cleared)' }}>✓ MD-2 Taper Compliance</div>
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+          <div className="builder-audit-list">
+            <div className="builder-audit-card">
+              <div className="builder-audit-heading" style={{ color: 'var(--status-cleared)' }}>
+                ✓ MD-2 Taper Compliance
+              </div>
+              <p className="builder-audit-desc">
                 Volume matches -30% taper formula to preserve CNS output ahead of Saturday kickoff.
               </p>
             </div>
 
-            <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-app)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontWeight: 600, color: 'var(--accent-secondary)' }}>Collision Safety Check</div>
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+            <div className="builder-audit-card">
+              <div className="builder-audit-heading" style={{ color: 'var(--accent-secondary)' }}>
+                Collision Safety Check
+              </div>
+              <p className="builder-audit-desc">
                 Excluded high-impact contact drills for players currently in RTP hold.
               </p>
             </div>

@@ -2,34 +2,29 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import '../../../../../styles/coach-portal/athlete-profile.css';
 
 export default function AthleteInspectionPage({ params }: { params: { id: string } }) {
   const [activeTab, setActiveTab] = useState<'biometrics' | 'injuries' | 'workouts'>('biometrics');
   const [contactCleared, setContactCleared] = useState(true);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+    <div className="athlete-container">
       {/* Top Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
+      <div className="athlete-header">
         <div>
-          <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)', fontWeight: 600 }}>
+          <span className="athlete-screen-tag">
             [SCREEN W-04] POSITIONAL PROFILE &amp; BIOMETRIC INSPECTION
           </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
-            <Link href="/portal/dashboard" style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+          <div className="athlete-title-row">
+            <Link href="/portal/dashboard" className="athlete-back-link">
               ← Squad Roster
             </Link>
-            <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Maro Itoje #4</h1>
+            <h1 className="athlete-name">Maro Itoje #4</h1>
             <span
-              style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                paddingBlock: '0.2rem',
-                paddingInline: '0.6rem',
-                borderRadius: 'var(--radius-pill)',
-                backgroundColor: contactCleared ? 'color-mix(in oklab, var(--status-cleared), transparent 85%)' : 'color-mix(in oklab, var(--status-critical), transparent 85%)',
-                color: contactCleared ? 'var(--status-cleared)' : 'var(--status-critical)',
-              }}
+              className={`athlete-status-badge ${
+                contactCleared ? 'athlete-status-badge--cleared' : 'athlete-status-badge--critical'
+              }`}
             >
               {contactCleared ? '● Full Contact Cleared' : '⚠️ Medical Non-Contact Hold'}
             </span>
@@ -40,75 +35,42 @@ export default function AthleteInspectionPage({ params }: { params: { id: string
           <button
             type="button"
             onClick={() => setContactCleared(!contactCleared)}
-            style={{
-              paddingBlock: '0.5rem',
-              paddingInline: '0.875rem',
-              borderRadius: 'var(--radius-md)',
-              border: '1px solid var(--border-divider)',
-              backgroundColor: 'var(--bg-surface-elevated)',
-              color: 'var(--text-primary)',
-              fontWeight: 600,
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-            }}
+            className="athlete-action-btn"
           >
             {contactCleared ? '🚫 Place on Non-Contact Hold' : '✅ Clear for Contact'}
           </button>
-          <Link
-            href="/portal/messages"
-            style={{
-              paddingBlock: '0.5rem',
-              paddingInline: '0.875rem',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'var(--accent-primary)',
-              color: 'var(--color-midnight-indigo)',
-              fontWeight: 700,
-              fontSize: '0.75rem',
-              display: 'inline-flex',
-              alignItems: 'center',
-            }}
-          >
+          <Link href="/portal/messages" className="athlete-msg-btn">
             💬 Direct Message
           </Link>
         </div>
       </div>
 
       {/* Athlete Header Card */}
-      <section
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: 'var(--space-md)',
-          backgroundColor: 'var(--bg-surface)',
-          border: '1px solid var(--border-divider)',
-          borderRadius: 'var(--radius-lg)',
-          padding: 'var(--space-lg)',
-        }}
-      >
-        <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Positional Unit</div>
-          <div style={{ fontSize: '1.125rem', fontWeight: 700 }}>Forwards • Lock / Second Row</div>
+      <section className="athlete-summary-card">
+        <div className="athlete-summary-metric">
+          <div className="athlete-metric-label">Positional Unit</div>
+          <div className="athlete-metric-value">Forwards • Lock / Second Row</div>
         </div>
-        <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Body Mass / Height</div>
-          <div style={{ fontSize: '1.125rem', fontWeight: 700 }}>115 kg • 195 cm (BMI 30.2)</div>
+        <div className="athlete-summary-metric">
+          <div className="athlete-metric-label">Body Mass / Height</div>
+          <div className="athlete-metric-value">115 kg • 195 cm (BMI 30.2)</div>
         </div>
-        <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>HRV (rMSSD) / Baseline</div>
-          <div style={{ fontSize: '1.125rem', fontWeight: 700, fontFamily: 'var(--font-mono)', color: 'var(--status-cleared)' }}>
+        <div className="athlete-summary-metric">
+          <div className="athlete-metric-label">HRV (rMSSD) / Baseline</div>
+          <div className="athlete-metric-value" style={{ fontFamily: 'var(--font-mono)', color: 'var(--status-cleared)' }}>
             88 ms <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>(+8% vs avg)</span>
           </div>
         </div>
-        <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Bronco Test (1.2 km)</div>
-          <div style={{ fontSize: '1.125rem', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+        <div className="athlete-summary-metric">
+          <div className="athlete-metric-label">Bronco Test (1.2 km)</div>
+          <div className="athlete-metric-value" style={{ fontFamily: 'var(--font-mono)' }}>
             4:38 min <span style={{ fontSize: '0.75rem', color: 'var(--accent-primary)' }}>(Club Top 10%)</span>
           </div>
         </div>
       </section>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: 'var(--space-xs)', borderBottom: '1px solid var(--border-divider)' }}>
+      <div className="athlete-tabs-bar">
         {[
           { key: 'biometrics', label: 'Heart Rate & Strain Telemetry' },
           { key: 'injuries', label: 'Collision & Return-to-Play Log' },
@@ -118,17 +80,7 @@ export default function AthleteInspectionPage({ params }: { params: { id: string
             key={t.key}
             type="button"
             onClick={() => setActiveTab(t.key as any)}
-            style={{
-              paddingBlock: '0.625rem',
-              paddingInline: '1rem',
-              border: 'none',
-              backgroundColor: 'transparent',
-              borderBottom: activeTab === t.key ? '3px solid var(--accent-primary)' : '3px solid transparent',
-              color: activeTab === t.key ? 'var(--text-primary)' : 'var(--text-muted)',
-              fontWeight: 600,
-              fontSize: '0.8125rem',
-              cursor: 'pointer',
-            }}
+            className={`athlete-tab-btn ${activeTab === t.key ? 'athlete-tab-btn--active' : ''}`}
           >
             {t.label}
           </button>
@@ -136,48 +88,48 @@ export default function AthleteInspectionPage({ params }: { params: { id: string
       </div>
 
       {/* Tab Panels */}
-      <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-lg)' }}>
+      <div className="athlete-tab-content">
         {activeTab === 'biometrics' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>250Hz Ingestion Curve (Z1 to Z5 Zone Distribution)</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 'var(--space-sm)' }}>
-              <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-app)', borderRadius: 'var(--radius-md)' }}>
-                <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>Zone 1 (Recovery)</div>
-                <div style={{ fontSize: '1.125rem', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>42 mins</div>
+          <div>
+            <h3 className="athlete-section-title">250Hz Ingestion Curve (Z1 to Z5 Zone Distribution)</h3>
+            <div className="athlete-zones-grid">
+              <div className="athlete-zone-card">
+                <div className="athlete-zone-label">Zone 1 (Recovery)</div>
+                <div className="athlete-zone-value">42 mins</div>
               </div>
-              <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-app)', borderRadius: 'var(--radius-md)' }}>
-                <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>Zone 4 (Threshold)</div>
-                <div style={{ fontSize: '1.125rem', fontWeight: 700, fontFamily: 'var(--font-mono)', color: 'var(--accent-secondary)' }}>18 mins</div>
+              <div className="athlete-zone-card">
+                <div className="athlete-zone-label">Zone 4 (Threshold)</div>
+                <div className="athlete-zone-value" style={{ color: 'var(--accent-secondary)' }}>18 mins</div>
               </div>
-              <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-app)', borderRadius: 'var(--radius-md)' }}>
-                <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>Zone 5 (Max Capacity)</div>
-                <div style={{ fontSize: '1.125rem', fontWeight: 700, fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)' }}>6 mins</div>
+              <div className="athlete-zone-card">
+                <div className="athlete-zone-label">Zone 5 (Max Capacity)</div>
+                <div className="athlete-zone-value" style={{ color: 'var(--accent-primary)' }}>6 mins</div>
               </div>
             </div>
           </div>
         )}
 
         {activeTab === 'injuries' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>Return to Play Protocol Tracker</h3>
+          <div>
+            <h3 className="athlete-section-title">Return to Play Protocol Tracker</h3>
             <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
               Last concussion screening: 14 Oct 2026. Neck strength baseline: 42 kg isometric tension (Pass).
             </p>
-            <div style={{ padding: '0.75rem', backgroundColor: 'color-mix(in oklab, var(--status-cleared), transparent 90%)', borderRadius: 'var(--radius-md)', border: '1px solid var(--status-cleared)' }}>
-              <div style={{ fontWeight: 700, color: 'var(--status-cleared)' }}>Stage 6 Complete: Full Contact Scrimmage Permitted</div>
+            <div className="athlete-rtp-banner">
+              Stage 6 Complete: Full Contact Scrimmage Permitted
             </div>
           </div>
         )}
 
         {activeTab === 'workouts' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>Assigned Microcycle Session: MD-2 Explosive Power</h3>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-xs)' }}>
-              <li style={{ padding: '0.625rem', backgroundColor: 'var(--bg-app)', borderRadius: 'var(--radius-sm)', display: 'flex', justifyContent: 'space-between' }}>
+          <div>
+            <h3 className="athlete-section-title">Assigned Microcycle Session: MD-2 Explosive Power</h3>
+            <ul className="athlete-workout-list">
+              <li className="athlete-workout-item">
                 <span>Power Clean from Hang</span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 600 }}>4 sets × 3 reps @ 110 kg</span>
               </li>
-              <li style={{ padding: '0.625rem', backgroundColor: 'var(--bg-app)', borderRadius: 'var(--radius-sm)', display: 'flex', justifyContent: 'space-between' }}>
+              <li className="athlete-workout-item">
                 <span>Trap Bar Deadlift (Explosive Peak)</span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 600 }}>3 sets × 5 reps @ 180 kg</span>
               </li>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import '../../../../../styles/coach-portal/plan-schedule.css';
 
 export default function MatchSchedulePage() {
   const [selectedUnit, setSelectedUnit] = useState<'All' | 'Forwards' | 'Backs'>('Forwards');
@@ -22,35 +22,25 @@ export default function MatchSchedulePage() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+    <div className="schedule-container">
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
+      <div className="schedule-header">
         <div>
-          <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)', fontWeight: 600 }}>
+          <span className="schedule-screen-tag">
             [SCREEN W-06] MATCH-WEEK MASTER CALENDAR &amp; DISPATCH
           </span>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Weekly Rugby Microcycle</h1>
+          <h1 className="schedule-title">Weekly Rugby Microcycle</h1>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
+        <div className="schedule-actions">
           {/* Unit Toggle */}
-          <div style={{ display: 'inline-flex', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-md)', padding: '2px' }}>
+          <div className="schedule-unit-toggle">
             {(['All', 'Forwards', 'Backs'] as const).map((u) => (
               <button
                 key={u}
                 type="button"
                 onClick={() => setSelectedUnit(u)}
-                style={{
-                  paddingBlock: '0.3125rem',
-                  paddingInline: '0.75rem',
-                  border: 'none',
-                  backgroundColor: selectedUnit === u ? 'var(--bg-surface-elevated)' : 'transparent',
-                  color: selectedUnit === u ? 'var(--text-primary)' : 'var(--text-muted)',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  borderRadius: 'var(--radius-sm)',
-                }}
+                className={`schedule-unit-btn ${selectedUnit === u ? 'schedule-unit-btn--active' : ''}`}
               >
                 {u}
               </button>
@@ -60,18 +50,7 @@ export default function MatchSchedulePage() {
           <button
             type="button"
             onClick={handleDispatch}
-            style={{
-              paddingBlock: '0.5rem',
-              paddingInline: '1.25rem',
-              backgroundColor: isDispatched ? 'var(--status-cleared)' : 'var(--accent-primary)',
-              color: 'var(--color-midnight-indigo)',
-              border: 'none',
-              borderRadius: 'var(--radius-md)',
-              fontWeight: 700,
-              fontSize: '0.875rem',
-              cursor: 'pointer',
-              transition: 'background-color 200ms ease',
-            }}
+            className={`schedule-dispatch-btn ${isDispatched ? 'schedule-dispatch-btn--dispatched' : ''}`}
           >
             {isDispatched ? '✓ Dispatched to Squad Phones!' : '📲 Publish Schedule to Squad Devices'}
           </button>
@@ -79,55 +58,31 @@ export default function MatchSchedulePage() {
       </div>
 
       {/* Calendar Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-md)' }}>
+      <div className="schedule-grid">
         {days.map((d) => (
           <div
             key={d.code}
-            style={{
-              backgroundColor: 'var(--bg-surface)',
-              border: d.code === 'MD-2' ? '2px solid var(--accent-primary)' : '1px solid var(--border-divider)',
-              borderRadius: 'var(--radius-lg)',
-              padding: 'var(--space-md)',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              gap: 'var(--space-md)',
-              position: 'relative',
-            }}
+            className={`schedule-day-card ${d.code === 'MD-2' ? 'schedule-day-card--active' : ''}`}
           >
             {d.code === 'MD-2' && (
-              <span
-                style={{
-                  position: 'absolute',
-                  top: '-10px',
-                  right: '12px',
-                  backgroundColor: 'var(--accent-primary)',
-                  color: 'var(--color-midnight-indigo)',
-                  fontSize: '0.625rem',
-                  fontWeight: 800,
-                  paddingBlock: '2px',
-                  paddingInline: '8px',
-                  borderRadius: 'var(--radius-pill)',
-                  textTransform: 'uppercase',
-                }}
-              >
+              <span className="schedule-active-tag">
                 Today Active
               </span>
             )}
 
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '1.125rem', color: 'var(--accent-secondary)' }}>
+              <div className="schedule-day-header">
+                <span className="schedule-day-code">
                   {d.code}
                 </span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{d.day}</span>
+                <span className="schedule-day-name">{d.day}</span>
               </div>
-              <div style={{ marginTop: '0.5rem', fontWeight: 700, fontSize: '0.9375rem' }}>
+              <div className="schedule-day-focus">
                 {d.focus}
               </div>
             </div>
 
-            <div style={{ borderTop: '1px solid var(--border-divider)', paddingTop: '0.5rem', display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+            <div className="schedule-day-footer">
               <span>Volume: {d.volume}</span>
               <span>Unit: {d.unit}</span>
             </div>

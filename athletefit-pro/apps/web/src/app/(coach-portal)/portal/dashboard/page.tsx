@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import '../../../../styles/coach-portal/dashboard.css';
 
 interface SquadPlayer {
   id: string;
@@ -32,149 +33,87 @@ export default function SquadCommandDashboard() {
   );
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+    <div className="dashboard-container">
       {/* Screen Header & Title */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
+      <div className="dashboard-header">
         <div>
-          <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)', fontWeight: 600 }}>
+          <span className="dashboard-screen-tag">
             [SCREEN W-03] DESKTOP SQUAD COMMAND
           </span>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
+          <h1 className="dashboard-title">
             Match-Day Operational Hub
           </h1>
         </div>
 
-        <div style={{ display: 'flex', gap: 'var(--space-xs)' }}>
-          <Link
-            href="/portal/plans/schedule"
-            style={{
-              paddingBlock: '0.5rem',
-              paddingInline: '1rem',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'var(--accent-primary)',
-              color: 'var(--color-midnight-indigo)',
-              fontWeight: 700,
-              fontSize: '0.875rem',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-            }}
-          >
+        <div>
+          <Link href="/portal/plans/schedule" className="dashboard-schedule-btn">
             <span>📅 Publish MD-2 Schedule</span>
           </Link>
         </div>
       </div>
 
       {/* Match Countdown Banner */}
-      <section
-        style={{
-          background: 'linear-gradient(135deg, color-mix(in oklab, var(--color-volt-lime), transparent 85%), color-mix(in oklab, var(--color-electric-orchid), transparent 85%))',
-          border: '1px solid var(--border-divider)',
-          borderRadius: 'var(--radius-lg)',
-          padding: 'var(--space-lg)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: 'var(--space-md)',
-        }}
-      >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.25rem' }}>🏉</span>
-            <span style={{ fontWeight: 800, fontSize: '1.125rem', textTransform: 'uppercase' }}>
+      <section className="dashboard-countdown-banner">
+        <div className="dashboard-countdown-left">
+          <div className="dashboard-countdown-heading">
+            <span className="dashboard-countdown-icon">🏉</span>
+            <span className="dashboard-countdown-title">
               48 Hours to Kickoff — Game vs. Harlequins
             </span>
           </div>
-          <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+          <p className="dashboard-countdown-desc">
             Twickenham Stoop • Match Day -2 Taper Active • Contact clearance locked for high-impact drills.
           </p>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: '1.5rem', fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--accent-primary)' }}>
-              48:14:02
-            </div>
-            <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-              Countdown to Whistle
-            </div>
-          </div>
+        <div className="dashboard-countdown-timer">
+          <div className="dashboard-countdown-digits">48:14:02</div>
+          <div className="dashboard-countdown-label">Countdown to Whistle</div>
         </div>
       </section>
 
       {/* KPI Ribbon */}
-      <section
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: 'var(--space-md)',
-        }}
-      >
-        <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)' }}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>
-            Squad Availability
-          </div>
-          <div style={{ fontSize: '1.875rem', fontWeight: 800, color: 'var(--status-cleared)', marginBlock: '0.25rem' }}>
-            32 / 35
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>91.4% Cleared for match roster</div>
+      <section className="dashboard-kpi-grid">
+        <div className="dashboard-kpi-card">
+          <div className="dashboard-kpi-label">Squad Availability</div>
+          <div className="dashboard-kpi-value dashboard-kpi-value--cleared">32 / 35</div>
+          <div className="dashboard-kpi-meta">91.4% Cleared for match roster</div>
         </div>
 
-        <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)' }}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>
-            Forwards Unit Readiness
-          </div>
-          <div style={{ fontSize: '1.875rem', fontWeight: 800, color: 'var(--accent-primary)', marginBlock: '0.25rem' }}>
-            88%
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Pack recovery within optimal range</div>
+        <div className="dashboard-kpi-card">
+          <div className="dashboard-kpi-label">Forwards Unit Readiness</div>
+          <div className="dashboard-kpi-value dashboard-kpi-value--accent">88%</div>
+          <div className="dashboard-kpi-meta">Pack recovery within optimal range</div>
         </div>
 
-        <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)' }}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>
-            Backs Unit Readiness
-          </div>
-          <div style={{ fontSize: '1.875rem', fontWeight: 800, color: 'var(--accent-secondary)', marginBlock: '0.25rem' }}>
-            92%
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Sprint readiness high / CNS recovered</div>
+        <div className="dashboard-kpi-card">
+          <div className="dashboard-kpi-label">Backs Unit Readiness</div>
+          <div className="dashboard-kpi-value dashboard-kpi-value--orchid">92%</div>
+          <div className="dashboard-kpi-meta">Sprint readiness high / CNS recovered</div>
         </div>
 
-        <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)' }}>
-          <div style={{ fontSize: '0.75rem', color: 'var(--status-critical)', fontWeight: 600, textTransform: 'uppercase' }}>
+        <div className="dashboard-kpi-card">
+          <div className="dashboard-kpi-label" style={{ color: 'var(--status-critical)' }}>
             Concussion &amp; RTP Hold
           </div>
-          <div style={{ fontSize: '1.875rem', fontWeight: 800, color: 'var(--status-critical)', marginBlock: '0.25rem' }}>
-            2 Players
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--status-critical)' }}>Stage 3 non-contact protocol</div>
+          <div className="dashboard-kpi-value dashboard-kpi-value--critical">2 Players</div>
+          <div className="dashboard-kpi-meta dashboard-kpi-meta--critical">Stage 3 non-contact protocol</div>
         </div>
       </section>
 
       {/* Squad Roster Table & Positional Unit Filtering */}
-      <section style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-lg)' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-md)', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
-          <h2 style={{ fontSize: '1.125rem', fontWeight: 700 }}>Active Squad Roster &amp; Biometric Readiness</h2>
+      <section className="dashboard-roster-card">
+        <div className="dashboard-roster-header">
+          <h2 className="dashboard-roster-title">Active Squad Roster &amp; Biometric Readiness</h2>
 
           {/* Unit Toggle Tabs */}
-          <div style={{ display: 'inline-flex', backgroundColor: 'var(--bg-app)', border: '1px solid var(--border-divider)', borderRadius: 'var(--radius-md)', padding: '3px' }}>
+          <div className="dashboard-unit-toggle">
             {(['All', 'Forwards', 'Backs'] as const).map((unit) => (
               <button
                 key={unit}
                 type="button"
                 onClick={() => setFilterUnit(unit)}
-                style={{
-                  paddingBlock: '0.3125rem',
-                  paddingInline: '0.875rem',
-                  borderRadius: 'var(--radius-sm)',
-                  border: 'none',
-                  backgroundColor: filterUnit === unit ? 'var(--bg-surface-elevated)' : 'transparent',
-                  color: filterUnit === unit ? 'var(--text-primary)' : 'var(--text-muted)',
-                  fontWeight: 600,
-                  fontSize: '0.75rem',
-                  cursor: 'pointer',
-                }}
+                className={`dashboard-unit-btn ${filterUnit === unit ? 'dashboard-unit-btn--active' : ''}`}
               >
                 {unit}
               </button>
@@ -183,34 +122,34 @@ export default function SquadCommandDashboard() {
         </div>
 
         {/* Responsive Table */}
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ inlineSize: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
+        <div className="dashboard-table-wrapper">
+          <table className="dashboard-table">
             <thead>
-              <tr style={{ borderBottom: '1px solid var(--border-divider)', color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                <th style={{ padding: '0.75rem' }}>Jersey</th>
-                <th style={{ padding: '0.75rem' }}>Player</th>
-                <th style={{ padding: '0.75rem' }}>Unit / Position</th>
-                <th style={{ padding: '0.75rem' }}>Readiness</th>
-                <th style={{ padding: '0.75rem' }}>Status</th>
-                <th style={{ padding: '0.75rem' }}>Last HSR</th>
-                <th style={{ padding: '0.75rem', textAlign: 'right' }}>Actions</th>
+              <tr>
+                <th className="dashboard-th">Jersey</th>
+                <th className="dashboard-th">Player</th>
+                <th className="dashboard-th">Unit / Position</th>
+                <th className="dashboard-th">Readiness</th>
+                <th className="dashboard-th">Status</th>
+                <th className="dashboard-th">Last HSR</th>
+                <th className="dashboard-th" style={{ textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredPlayers.map((player) => (
-                <tr key={player.id} style={{ borderBottom: '1px solid var(--border-divider)' }}>
-                  <td style={{ padding: '0.75rem', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
+                <tr key={player.id}>
+                  <td className="dashboard-td" style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
                     #{player.jersey}
                   </td>
-                  <td style={{ padding: '0.75rem', fontWeight: 600 }}>
-                    <Link href={`/portal/athletes/${player.id}`} style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>
+                  <td className="dashboard-td">
+                    <Link href={`/portal/athletes/${player.id}`} className="dashboard-player-link">
                       {player.name}
                     </Link>
                   </td>
-                  <td style={{ padding: '0.75rem', color: 'var(--text-muted)' }}>
+                  <td className="dashboard-td" style={{ color: 'var(--text-muted)' }}>
                     <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{player.unit}:</span> {player.position}
                   </td>
-                  <td style={{ padding: '0.75rem', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
+                  <td className="dashboard-td" style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
                     <span
                       style={{
                         color:
@@ -224,51 +163,24 @@ export default function SquadCommandDashboard() {
                       {player.readiness}%
                     </span>
                   </td>
-                  <td style={{ padding: '0.75rem' }}>
+                  <td className="dashboard-td">
                     <span
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.25rem',
-                        paddingBlock: '0.1875rem',
-                        paddingInline: '0.5rem',
-                        borderRadius: 'var(--radius-pill)',
-                        fontSize: '0.6875rem',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        backgroundColor:
-                          player.status === 'cleared'
-                            ? 'color-mix(in oklab, var(--status-cleared), transparent 85%)'
-                            : player.status === 'modified'
-                            ? 'color-mix(in oklab, var(--status-modified), transparent 85%)'
-                            : 'color-mix(in oklab, var(--status-critical), transparent 85%)',
-                        color:
-                          player.status === 'cleared'
-                            ? 'var(--status-cleared)'
-                            : player.status === 'modified'
-                            ? 'var(--status-modified)'
-                            : 'var(--status-critical)',
-                      }}
+                      className={`dashboard-status-pill ${
+                        player.status === 'cleared'
+                          ? 'dashboard-status-pill--cleared'
+                          : player.status === 'modified'
+                          ? 'dashboard-status-pill--modified'
+                          : 'dashboard-status-pill--critical'
+                      }`}
                     >
                       ● {player.status}
                     </span>
                   </td>
-                  <td style={{ padding: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
+                  <td className="dashboard-td" style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
                     {player.lastHSR}
                   </td>
-                  <td style={{ padding: '0.75rem', textAlign: 'right' }}>
-                    <Link
-                      href={`/portal/athletes/${player.id}`}
-                      style={{
-                        paddingBlock: '0.25rem',
-                        paddingInline: '0.625rem',
-                        backgroundColor: 'var(--bg-app)',
-                        border: '1px solid var(--border-divider)',
-                        borderRadius: 'var(--radius-sm)',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                      }}
-                    >
+                  <td className="dashboard-td" style={{ textAlign: 'right' }}>
+                    <Link href={`/portal/athletes/${player.id}`} className="dashboard-inspect-btn">
                       Inspect →
                     </Link>
                   </td>

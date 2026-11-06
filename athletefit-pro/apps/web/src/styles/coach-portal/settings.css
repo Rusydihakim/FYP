@@ -1,0 +1,114 @@
+/* ==========================================================================
+   AthleteFit Pro — Screen W-09: Club Settings, Staff Roles & API Styles
+   ========================================================================== */
+
+@import "../globals.css";
+
+@layer components {
+  .settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .settings-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .settings-screen-tag {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+
+  .settings-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+  }
+
+  .settings-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+  }
+
+  .settings-card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+  }
+
+  .settings-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .settings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+    text-align: left;
+  }
+
+  .settings-th {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-divider);
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .settings-td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--border-divider);
+  }
+
+  .settings-td--name {
+    font-weight: 600;
+  }
+
+  .settings-td--desc {
+    color: var(--text-muted);
+  }
+
+  .settings-td--status {
+    color: var(--status-cleared);
+  }
+
+  .settings-integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .settings-integration-card {
+    padding: 0.875rem;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .settings-integration-name {
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+
+  .settings-integration-endpoint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .settings-integration-status {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--status-cleared);
+    font-weight: 600;
+  }
+}
+

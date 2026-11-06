@@ -1,0 +1,162 @@
+/* ==========================================================================
+   AthleteFit Pro — Screen W-06: Match-Week Master Calendar & Dispatch Styles
+   ========================================================================== */
+
+@import "../globals.css";
+
+@layer components {
+  .schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .schedule-screen-tag {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+
+  .schedule-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-top: 0.25rem;
+  }
+
+  .schedule-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .schedule-unit-toggle {
+    display: inline-flex;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: 2px;
+  }
+
+  .schedule-unit-btn {
+    padding-block: 0.3125rem;
+    padding-inline: 0.75rem;
+    border: none;
+    background-color: transparent;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 150ms ease;
+  }
+
+  .schedule-unit-btn:hover {
+    color: var(--text-primary);
+  }
+
+  .schedule-unit-btn--active {
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+  }
+
+  .schedule-dispatch-btn {
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: var(--accent-primary);
+    color: var(--color-midnight-indigo);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 200ms ease, filter 150ms ease;
+  }
+
+  .schedule-dispatch-btn:hover {
+    filter: brightness(1.08);
+  }
+
+  .schedule-dispatch-btn--dispatched {
+    background-color: var(--status-cleared);
+  }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .schedule-day-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-md);
+    position: relative;
+  }
+
+  .schedule-day-card--active {
+    border: 2px solid var(--accent-primary);
+  }
+
+  .schedule-active-tag {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    background-color: var(--accent-primary);
+    color: var(--color-midnight-indigo);
+    font-size: 0.625rem;
+    font-weight: 800;
+    padding-block: 2px;
+    padding-inline: 8px;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+  }
+
+  .schedule-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .schedule-day-code {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 1.125rem;
+    color: var(--accent-secondary);
+  }
+
+  .schedule-day-name {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .schedule-day-focus {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+
+  .schedule-day-footer {
+    border-top: 1px solid var(--border-divider);
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+}
+

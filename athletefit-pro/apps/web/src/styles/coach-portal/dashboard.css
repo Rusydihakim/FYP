@@ -1,0 +1,277 @@
+/* ==========================================================================
+   AthleteFit Pro — Screen W-03: Desktop Squad Command Dashboard Styles
+   ========================================================================== */
+
+@import "../globals.css";
+
+@layer components {
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .dashboard-screen-tag {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    fontWeight: 600;
+  }
+
+  .dashboard-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-top: 0.25rem;
+  }
+
+  .dashboard-schedule-btn {
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    border-radius: var(--radius-md);
+    background-color: var(--accent-primary);
+    color: var(--color-midnight-indigo);
+    font-weight: 700;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: filter 150ms ease;
+  }
+
+  .dashboard-schedule-btn:hover {
+    filter: brightness(1.08);
+  }
+
+  /* Match Countdown Banner */
+  .dashboard-countdown-banner {
+    background: linear-gradient(135deg, color-mix(in oklab, var(--color-volt-lime), transparent 85%), color-mix(in oklab, var(--color-electric-orchid), transparent 85%));
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .dashboard-countdown-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .dashboard-countdown-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dashboard-countdown-icon {
+    font-size: 1.25rem;
+  }
+
+  .dashboard-countdown-title {
+    font-weight: 800;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+  }
+
+  .dashboard-countdown-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .dashboard-countdown-timer {
+    text-align: right;
+  }
+
+  .dashboard-countdown-digits {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+  }
+
+  .dashboard-countdown-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* KPI Ribbon */
+  .dashboard-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .dashboard-kpi-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+  }
+
+  .dashboard-kpi-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .dashboard-kpi-value {
+    font-size: 1.875rem;
+    font-weight: 800;
+    margin-block: 0.25rem;
+  }
+
+  .dashboard-kpi-value--cleared { color: var(--status-cleared); }
+  .dashboard-kpi-value--accent { color: var(--accent-primary); }
+  .dashboard-kpi-value--orchid { color: var(--accent-secondary); }
+  .dashboard-kpi-value--critical { color: var(--status-critical); }
+
+  .dashboard-kpi-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .dashboard-kpi-meta--critical {
+    color: var(--status-critical);
+  }
+
+  /* Squad Roster Table */
+  .dashboard-roster-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+  }
+
+  .dashboard-roster-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .dashboard-roster-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .dashboard-unit-toggle {
+    display: inline-flex;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-md);
+    padding: 3px;
+  }
+
+  .dashboard-unit-btn {
+    padding-block: 0.3125rem;
+    padding-inline: 0.875rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    background-color: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .dashboard-unit-btn:hover {
+    color: var(--text-primary);
+  }
+
+  .dashboard-unit-btn--active {
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+  }
+
+  .dashboard-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .dashboard-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  .dashboard-th {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-divider);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .dashboard-td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-divider);
+  }
+
+  .dashboard-player-link {
+    color: var(--text-primary);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .dashboard-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-block: 0.1875rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .dashboard-status-pill--cleared {
+    background-color: color-mix(in oklab, var(--status-cleared), transparent 85%);
+    color: var(--status-cleared);
+  }
+
+  .dashboard-status-pill--modified {
+    background-color: color-mix(in oklab, var(--status-modified), transparent 85%);
+    color: var(--status-modified);
+  }
+
+  .dashboard-status-pill--critical {
+    background-color: color-mix(in oklab, var(--status-critical), transparent 85%);
+    color: var(--status-critical);
+  }
+
+  .dashboard-inspect-btn {
+    padding-block: 0.25rem;
+    padding-inline: 0.625rem;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: background-color 150ms ease;
+  }
+
+  .dashboard-inspect-btn:hover {
+    background-color: var(--bg-surface-hover);
+  }
+}
+

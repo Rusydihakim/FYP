@@ -1,0 +1,279 @@
+/* ==========================================================================
+   AthleteFit Pro — Coach Portal Shell & Layout Styles
+   ========================================================================== */
+
+@import "../globals.css";
+
+@layer components {
+  .portal-shell {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    min-block-size: 100dvh;
+    background-color: var(--bg-app);
+  }
+
+  .portal-sidebar {
+    position: sticky;
+    top: 0;
+    block-size: 100dvh;
+    background-color: var(--bg-surface);
+    border-inline-end: 1px solid var(--border-divider);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: var(--space-md);
+    padding-inline: var(--space-sm);
+    z-index: 40;
+    transition: width 200ms ease;
+  }
+
+  .portal-sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .portal-brand-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--space-xs);
+    padding-block: var(--space-xs);
+    border-bottom: 1px solid var(--border-divider);
+  }
+
+  .portal-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+  }
+
+  .portal-brand-accent {
+    color: var(--accent-primary);
+  }
+
+  .portal-brand-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 8px color-mix(in oklab, var(--accent-primary), transparent 50%);
+  }
+
+  .portal-sidebar-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.875rem;
+    padding: 0.25rem;
+  }
+
+  .portal-sidebar-toggle:hover {
+    color: var(--text-primary);
+  }
+
+  .portal-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .portal-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-block: 0.625rem;
+    padding-inline: var(--space-sm);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background-color: transparent;
+    border-left: 3px solid transparent;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .portal-nav-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-hover);
+  }
+
+  .portal-nav-link--active {
+    font-weight: 600;
+    color: var(--text-primary);
+    background-color: color-mix(in oklab, var(--accent-primary), transparent 85%);
+    border-left: 3px solid var(--accent-primary);
+  }
+
+  .portal-nav-icon {
+    font-size: 1.125rem;
+  }
+
+  .portal-profile-card {
+    border-top: 1px solid var(--border-divider);
+    padding-block-start: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .portal-profile-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .portal-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    background-color: var(--accent-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--color-midnight-indigo);
+    flex-shrink: 0;
+  }
+
+  .portal-profile-info {
+    overflow: hidden;
+  }
+
+  .portal-profile-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .portal-profile-role {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+  }
+
+  .portal-logout-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.75rem;
+    color: var(--status-critical);
+    padding-block: 4px;
+    padding-inline: var(--space-xs);
+    border-radius: var(--radius-sm);
+    transition: background-color 150ms ease;
+  }
+
+  .portal-logout-link:hover {
+    background-color: color-mix(in oklab, var(--status-critical), transparent 90%);
+  }
+
+  .portal-main-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .portal-header {
+    position: sticky;
+    top: 0;
+    block-size: var(--header-height);
+    background-color: color-mix(in oklab, var(--bg-surface), transparent 12%);
+    backdrop-filter: blur(12px);
+    border-block-end: 1px solid var(--border-divider);
+    padding-inline: var(--space-xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    z-index: 30;
+  }
+
+  .portal-header-left,
+  .portal-header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .portal-match-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-pill);
+    padding-block: 0.25rem;
+    padding-inline: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .portal-match-badge__accent {
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+  }
+
+  .portal-alert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background-color: color-mix(in oklab, var(--status-critical), transparent 90%);
+    border: 1px solid var(--status-critical);
+    border-radius: var(--radius-pill);
+    padding-block: 0.25rem;
+    padding-inline: 0.625rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--status-critical);
+  }
+
+  .portal-setup-btn {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-divider);
+    padding-block: 0.3125rem;
+    padding-inline: 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    transition: background-color 150ms ease;
+  }
+
+  .portal-setup-btn:hover {
+    background-color: var(--bg-surface-hover);
+  }
+
+  .portal-sync-badge {
+    font-size: 0.6875rem;
+    font-family: var(--font-mono);
+    color: var(--status-cleared);
+    background-color: color-mix(in oklab, var(--status-cleared), transparent 90%);
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--status-cleared);
+  }
+
+  .portal-workspace {
+    padding-block: var(--space-xl);
+    padding-inline: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-inline-size: 1600px;
+    inline-size: 100%;
+    margin-inline: auto;
+  }
+}
+
